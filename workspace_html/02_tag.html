@@ -5,12 +5,52 @@
     <!-- head 태그에는 보통 '페이지의 정보'가 있다 -->
     <head>
         <title>제목입니다.</title>
-        <h1>에이치 원</h1>
-        <h2>에이치 투</h2>
-        <h3>에이치 삼</h3>
+ 
     </head>   
     <!-- body 태그에는 보여줄 내용을 적는다 --> 
     <body>
-        <img>shutterstock_1844153299-1024x683-1.png</img>
+        <!--title: 마우스 올려두면 이름이 뜨는 태그-->
+        <h1 title="타이틀">h1 heading tag</h1>
+        <!--h1~h6: 폰트를 헤드라인으로 만들어주는 태그-->
+        <h2>h2 헤딩 태그</h2>
+        <h4>에이치4 heading 태그</h4>
+        <h5>h오 헤딩 태그</h5>
+        <h6>에이치 6</h6>
+        
+        <!--p: 단락을 만들어 주는 태그-->
+        <p>단락 1</p>
+        <p>단락 2 다음         
+            <!--원래 띄어쓰기는 1개만 적용, 줄바꿈도 적용이 안된다.-->
+            줄</p>
+            <!--br: 줄바꿈 태그-->
+            <p>줄바꿈1<br>줄바꿈2</p>
+            <!--hr: 수평선 태그-->
+            <hr>
+            </pre>
+            
+        
+    </body>
+            <!--각종 특수 기호는 명령어로 입력-->
+            0123<abc>한글<br>
+           0123&lt;abc&gt;한글
+            &copy;카피라이트 주식회사
+             스페2    &nbsp;&nbsp;&nbsp;&nbsp; 스바ㅏㅏ
+            <!--pre: 스페이스바, 엔터 개발자 화면과 같이 그대로 적용되는 태그-->>
+            <pre>   1
+                2<br>
+                3
+                4
+            </pre>
+            <!--각종 폰트 강조 태그-->
+            <strong>글씨 강하게 강조</strong><br>
+            <em>글씨 기울여 강조</em><br>
+            <i>이탤릭으로 강조</i><br>
+            <b>두껍게 강조</b><br>
+            <b><i>이탤릭으로 두껍게 강조</b></i><br>
+            <!--img srt="이미지 불러오기 태그" / alt 장애인 대상 접근성 태그-->
+        <img src="data:image/jpeg;base64,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"
+        alt="치와와 사진" width="100px" height="500px">
+        <img src="치와와.jfif" alt="다운로드 치와와">
+
     </body>
     </html>
