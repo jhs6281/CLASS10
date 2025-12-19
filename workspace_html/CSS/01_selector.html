@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* CSS 주석 중요! */
+        /* 전체 선택자 */
+        * {
+            color: red;
+        }
+
+        /* tag 선택자 (아무것도 안씀)*/
+        h2 {
+            font-size: 800%;
+        }
+
+        /* 콤마, 로 구분하여 다중 지정 가능 */
+        h1,
+        h2 {
+            font-size: 200%;
+        }
+
+        /* 점. 으로 class 태그를 선택한다. */
+        .c1 {
+            background-color: green;
+        }
+
+        .bigText {
+            font-size: 30px;
+        }
+
+        /* 샵#으로 id 선택 / id는 중복되지 않는 습관을 들이자 */
+        #i1 {
+            color: rgb(237, 199, 174);
+        }
+
+        /* 꺽쇠>로 자식 선택자 */
+        div>strong {
+            background-color: docgerblue;
+        }
+
+        /* 많이 쓰임 자손 선택자 */
+        div strong {
+            border: 3px solid red;
+        }
+        /* 속성 선택자 */
+        [href] {
+            background-color : yellow;
+        }
+        
+        /* 속성 값 선택자 */
+        [type=text] {
+            background-color : yellow;
+        }
+
+        /* #i1은 [id=i1]의 줄임말 */
+        [id=i1]{
+            background-color: yellow;
+        }
+        /* https로 값이 시작되는 것들(like 검색처럼)  */
+        [href^=https]{
+            color: pink;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>hello world</h1>
+    <h2>부제목</h2>
+    <ul>
+        <li class="c1" id="i1">li 1</li>
+        <!-- Class 태그의 특징: 한개의 태그가 여러가지 속성을 가질 수 있다. -->
+        <li class="c1 bigText c2">li 2</li>
+        <li>li 3</li>
+    </ul>
+
+    <strong>div안에 strong</strong>
+    <div>
+        <strong>div안에 strong</strong>
+    </div>
+
+    <div>
+        <a href="">
+            <strong>div > a > strong</strong>
+            <div>
+                <p><strong>안녕하세요</strong></p>
+            </div>
+        </a>
+    </div>
+
+    <INPUT type="text"></INPUT><br>
+    <INPUT type="password"></INPUT><br>
+    <a href="http://...">http</a>
+    <a href="https://...">https</a>
+</body>
+
+</html>

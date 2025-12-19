@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form><!--form이 있어야 내부 데이터 값이 전송된다-->
+
+        <!--input: 입력 받기-->
+        text : <input type="text"><br>
+        <!--type text는 기본값이라 생략 가능 / 왠만하면 type 적기-->
+        text(기본값) : <input><br>
+        <!--value: 초기값-->
+        text(value) : <input type="text" value="벨류"><br>
+        <!--placeholder: 참고 사항-->
+        text(placeholder) : <input type="text" placeholder="플레이스홀더"><br>
+
+        <!--읽기전용-->
+        readonly : <input type="text" value="초기값" readonly="readonly"><br>
+        <!--비활성화-->
+        disabled : <input type="text" value="초기값" disabled="disabled"><br>
+
+        password : <input type="password"><br>
+        <hr>
+        <!--pre태그 형식이다.(그대로 출력)-->
+        <textarea rows="5" cols="5">미리 
+            보여줄   글</textarea>
+        <textarea></textarea>
+        <br>
+        <hr>
+        <!--datalist: text입력 시 선택지 제공-->
+        datalist 연습 : <input type="text" list="c">
+        <datalist id="c">
+            <option value="가나"></option>
+            <option value="스위스"></option>
+            <option value="가봉"></option>
+        </datalist>
+        <br>
+
+        <!--button: 버튼, value에 버튼 글씨 사용-->
+        <input type="button" value="로그인"><br>
+        <input type="button">버튼 태그</button><br>
+        <!--submit: action의 벨류값을 전해준다. 없을 시 새로고침-->
+        submit : <input type="submit" value="전송"></input><br>
+        button : <button type="submit">버튼 submit</button><br>
+        reset : <input type="reset" value="기본글씨는 초기화"></input><br>
+        <!--type: image-->
+        <button type="button">
+            <img src="shutterstock_1844153299-1024x683-1.png " alt="고양이 사진의 이미지 버튼"></button> <br>
+        <hr>
+        <!--check box: 선택을 하지 않거나, 중복 선택이 가능하다.-->
+        check box :
+        <input type="checkbox" value="1"> 샷추가</input>
+        <input type="checkbox" value="2" checked="checked" disabled="disabled"> 휘핑크림</input>
+        <input type="checkbox" value="3"> 펄추가</input>
+        <input type="checkbox" value="4"> 시럽</input>
+        <br>
+        <!--radio: 펼쳐놓고 1개만 선택(select와 인터페이스 차이)-->
+        radio :
+        <!--radio를 사용할 때 꼭 1개 이상의 checked를 사용하자(null값 방지)-->
+        <input type="radio" name="china" value="1" checked="checked">짜장면
+        <input type="radio" name="china" value="2">마파두부
+        <input type="radio" name="china" value="3">탕수육
+        <br>
+        <!--name 값에 따라 그룹을 정한다.-->
+        <input type="radio" name="gender" value="female" checked="checked">여자
+        <input type="radio" name="gender" value="male">남자
+        <br>
+        <!--select: -->
+        select : <select name="china">
+            <option selected>--선택--</option>
+            <option value="1">짜장</option>
+            <option value="2">짬뽕</option>
+            <option value="3">짜장</option>
+        </select>
+        <br>
+        <!--select multiple: tmi 멀티플 기능으로 여러개 선택 가능-->
+        select multiple : <select name="china" size="3" multiple="multiple">
+            <option selected>--선택--</option>
+            <option value="1">짜장</option>
+            <option value="2">짬뽕</option>
+            <option value="3">짜장</option>
+        </select>
+        <br>
+        <label>
+            <input type="checkbox" id="perl">펄 추가 라벨1
+        </label>
+
+        <!--label: 하나로 묶기 (대충 눌러도 선택 되는 등에 많이 사용)-->
+        <label for="perl">펄 추가 라벨2</label>
+        <input type="checkbox" id="perl">
+        <br>
+
+        <!--color: 색상값 / 팬톤 올해의 컬러-->
+        color : <input type="color">
+        <br>
+        date : <input type="date" value="2025-12-19">
+        <br>
+        time : <input type="time">
+        <br>
+        <!--한글 써지는 버그 있음 ㅋ-->
+        number : <input type="number">
+        <br>
+        <!--range-->
+        range : <input type="range" min="0" max="100" step="1">
+        <br>
+        fieldset :
+        <fieldset>
+            <legend> 끊어져서 나오는 제목 </legend>
+            내용
+        </fieldset>
+    </form>
+
+    <!--폼 내부의 값 폼 요소
+    form 속성
+    method : get, post (기본값 : get)
+
+    action : 전송할 주소(기본값 : 현재 내 주소)
+    -->
+
+    <!--데이터를 전송하지 않는 태그 *(input이 아닌 것)
+    action
+
+    -->
+
+    <!--중요! get방식은 id가 주소창에 나온다.(주소에 나옴) 예) ?abcd=1234이다. name이 key값이다. -->
+    <hr>
+    <form method="get"><!--a태그와 비슷하지만 a태그는 주소가 고정되어 이동함. form은 사용자에게 입력값을 받아 유동적이다.-->
+        <input type="text" name="abcd"><br>
+        <input type="text" name="stay_C"><br>
+        <input type="submit" value="get 연습"><br>
+    </form>
+
+    <form method="get" action="https://search.naver.com/search.naver">
+        <input type="text" name="query"><br>
+        <input type="submit" value="네이버 검색"><br>
+    </form>
+
+
+    <form method="get" action="https://www.google.com/search">
+        <input type="text" name="q"><br>
+        <input type="submit" value="google 연습"><br>
+    </form>
+
+    <form method="post"><!--post는 주소창에 안보인다. 데이터값으로 행동할 때 이용됨-->
+        <input type="text" name="abcd"><br>
+        <input type="text" name="stay_C"><br>
+        <input type="submit" value="post 연습"><br>
+    </form>
+    <!-- 
+    get과 post의 차이
+    get의 값은 주소창을 통해 key=value 형태로 전송한다.
+    post의 값은 내용물을 body로 보낸다.
+    -->
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</body>
+
+</html>
