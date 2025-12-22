@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+      
+
+        /* pixel : 해당 디스플레이의 절대 크기의 단위 */
+        #pixel .box1 {
+            /* 배경색 바꾸기, 상속 안됨 */
+            background-color: rgb(255, 0, 0);
+            /* 폰트 색, 자식에게 상속 된다. */
+            color: #00fff0;
+            /* 폰트 크기, 상속 */
+            font-size: 16px;
+        }
+
+        #pixel .box1 .box2 {
+            background-color: rgba(0, 0, 255, 0.2);
+
+            color: #e2e2e2;
+            font-size: 31px;
+        }
+
+        #pixel .box3 {
+            font-size: 16px;
+        }
+
+        #percent .box1 {
+            font-size: 150%
+        }
+
+        /* 상대적 값이기 때문에 같은 150%에서 
+        150%*150%를 하여 점점 더 커진다.
+        그림, 영상, 제목, 부제목 작성에 유리함 */
+        #percent .box1 .box2 {
+            font-size: 150%
+        }
+
+        #percent .box1 .box2 .box3 {
+            font-size: 150%
+        }
+
+        /* em : 현재 폰트의 3배 크기 */
+        #em .box1 {
+            font-size: 1.5em;
+        }
+
+        #em .box1 .box2 {
+            font-size: 3.5em;
+        }
+
+        #em .box1 .box2 .box3 {
+            /* rem = 루트 em이라는 뜻이기에 원본 크기에 비례하여 지정한다.(절대 크기값)*/
+            font-size: 1.0rem;
+        }
+
+        /* [id^=v]  */
+        #v1,
+        #v2,
+        #v3,
+        #v4 {
+            /* 보더 외곽선
+            솔리드/도티드 */
+            border: 1px solid green;
+            /* margin : 여백 */
+            margin: 10px;
+        }
+
+        /* 중요! vh : Viewport(화면)의 세로 100분의 N 크기 */
+        #v1 {
+
+            height: 100vh;
+        }
+
+        /* vw : Viewport(화면)의 가로 100분의 N 크기 */
+        #v2 {
+
+            height: 20px;
+            width: 50vw;
+        }
+
+        /* vmin : 화면의 너비와 높이 중에서 작은 값을 1/100 쪼갠 크기 */
+        #v3 {
+            height: 100vmin;
+        }
+
+        /* vmax : 화면의 너비와 높이 중에서 큰 값을 1/100 쪼갠 크기 */
+        #v4 {
+            height: 100vmax;
+        }
+    </style>
+</head>
+
+<body>
+    기본글씨 abc Wi ABC 123 <br>
+
+    <!-- 픽셀 -->
+    <div id="pixel">
+        <div class="box1">
+            box1
+            <div class="box2">
+                box2
+                <div class="box3">
+                    box3
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 퍼센트 -->
+    <div id="percent">
+        <div class="box1">
+            box1-150%
+            <div class="box2">
+                box2-150%
+                <div class="box3">
+                    box3-150%
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="em">
+        <div class="box1">
+            box1-1.5em
+            <div class="box2">
+                box2-1.5em
+                <div class="box3">
+                    box3-1rem
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="v1"></div>
+    <div id="v2"></div>
+    <div id="v3"></div>
+    <div id="v4"></div>
+</body>
+
+</html>

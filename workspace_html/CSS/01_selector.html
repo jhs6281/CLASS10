@@ -39,30 +39,175 @@
 
         /* 꺽쇠>로 자식 선택자 */
         div>strong {
-            background-color: docgerblue;
+            background-color: blue;
         }
 
         /* 많이 쓰임 자손 선택자 */
         div strong {
             border: 3px solid red;
         }
+
         /* 속성 선택자 */
         [href] {
-            background-color : yellow;
+            background-color: rgb(104, 165, 107);
         }
-        
+
         /* 속성 값 선택자 */
         [type=text] {
-            background-color : yellow;
+            background-color: yellow;
         }
 
         /* #i1은 [id=i1]의 줄임말 */
-        [id=i1]{
+        [id=i1] {
             background-color: yellow;
         }
+
         /* https로 값이 시작되는 것들(like 검색처럼)  */
-        [href^=https]{
+        [href^=https] {
             color: pink;
+        }
+
+        [id^=title]_ {
+            color: blue;
+        }
+
+        /* $= 값으로 끝나는 모든 것 */
+        [id$=_title] {
+            color: green;
+        }
+
+        /* 정확한 속성명 선택(띄어쓰기로 분리된) */
+        [class~=c1] {
+            color: red;
+        }
+
+        /* 해당 속성을 포함한 모든 내용 */
+        [class*=c1] {
+            color: red;
+        }
+
+        input[readonly] {
+            color: blueviolet
+        }
+
+        ;
+
+        input[type=text] {
+            color: red
+        }
+
+        ;
+
+        /* a라는 태그중에 class가 c2 속성을 가진 항목을 선택한다 */
+        a.c2 {
+            color: blueviolet
+        }
+
+        ;
+
+        li.c1.c2 {
+            color: red;
+        }
+
+
+        /* ------ */
+
+
+
+
+
+
+
+        /* :hover(마우스 갖다대면 반응) 태그 범위를 주목 */
+        #div1:hover {
+            background-color: aquamarine;
+        }
+
+        /* :active 클릭 이벤트. 잠깐 열렸다가 닫히는 팝업창 등?*/
+        #div1:active:after {
+            background-color: greenyellow;
+            content: "hello";
+        }
+
+        /* :focus 집중 시켜주는 역할(tab을 눌러 이동/ 숨겨놓을 수 있다) */
+        .text1:focus {
+            background-color: black;
+        }
+
+        /* :nth-child N번째 지정 선택
+        (상대 주소와 비슷해서 코드가 수정되면 바뀔 위험) */
+        #ul1>li:nth-child(4) {
+            background-color: aqua;
+        }
+
+        /* 2n-1 or 2n+1 홀수를 구분하여 지정 */
+        #ul1>li:nth-child(2n-1) {
+            background-color: gray;
+        }
+
+        /* :after 요소 선택자 */
+        h3:after {
+            /* content 붙일 내용 */
+            content: "AFTER";
+            color: black;
+        }
+
+        /* :before 요소 선택자 */
+        h3:before {
+            /* content 붙일 내용 */
+            content: "BEFORE";
+            color: black;
+        }
+
+        /* :not() 특정 제외  */
+        #ul1 li:not(.c2) {
+            font-size: 32px;
+        }
+
+        /* ::selection 긁었을 때를 전체 선택 */
+        input + span::selection {
+            background-color: aqua;
+        }
+
+        /* :checked 체크 시에 선택 */
+        input[type=checkbox]:checked {
+            width: 30px;
+            height: 30px;
+        }
+
+        /* 중요! + 형제 태그 선택 */
+        input[type=checkbox]:checked+span {
+            text-decoration: line-through;
+        }
+
+        input[type=button]:active{
+            height: 10vh;
+            width: 100vh;
+        }
+        /* 중요! 우선순위 구체적일 수록 가장 높게 적용된다.
+            !important(거의 금기)> style 속성 > #id 선택자 > 속성 선택자 = .class선택자 > 태그 선택자 > 전체 선택자 > 브라우저 기본값
+            동등한 순위라면 마지막 값을 적용, 
+        */
+
+        #id2{
+            color:purple;
+        }
+
+        .class1 {
+            color: pink;
+        }
+
+        [data-human] {
+            color: coral;
+        }
+
+        div {
+            color: skyblue;
+            font-size: 32px;
+        }
+
+        div {
+            color: rgb(0, 0, 255)!important;
         }
     </style>
 </head>
@@ -95,6 +240,49 @@
     <INPUT type="password"></INPUT><br>
     <a href="http://...">http</a>
     <a href="https://...">https</a>
+
+    <table>
+        <tr>
+            <td class="no">No</td>
+            <td id="title_0">제목</td>
+            <td>글쓴이</td>
+        </tr>
+        <tr>
+            <td class="no">2</td>
+            <td id="title_2">제목2</td>
+            <td>글쓴이2</td>
+        </tr>
+        <tr>
+            <td class="no">1</td>
+            <td id="title_1">제목1</td>
+            <td>글쓴이1</td>
+        </tr>
+    </table>
+
+    <div id="div1">
+        hover 연습
+    </div>
+
+    focus 연습 : <input type="number" class="text1">
+
+    <ul id="ul1">
+        <li class="c1">1</li>
+        <li class="c2">2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul>
+
+    <h3>adcd</h3>
+
+    <input type="checkbox"><span>복습</span><br>
+    <input type="checkbox"><span>저녁먹기</span><br>
+
+    <input type="button" value="안녕"></button>
+
+    <div id="id2" class="class1" data-human="천안" style="color : brown">
+        우선 순위 연습
+    </div>
 </body>
 
 </html>
