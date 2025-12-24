@@ -20,17 +20,116 @@
             font-family: 'GMarketSans', Arial;
         }
 
-        .style{
-            font-style:italic;
+        .style {
+            font-style: italic;
         }
 
         /* 두깨 적용 */
-        .fw-100 {font-weight : 100;}
-        .fw-400 {font-weight : 400;}
-        .fw-1000 {font-weight : 1000;}
+        .fw-100 {
+            font-weight: 100;
+        }
+
+        .fw-400 {
+            font-weight: 400;
+        }
+
+        .fw-1000 {
+            font-weight: 1000;
+        }
+
         /* 100 ~ 1000 까지 100단위로 사용 가능 */
-        .fw-2000 {font-weight : 2000;}
-        .fw-bold {font-weight : bold;}
+        .fw-2000 {
+            font-weight: 2000;
+        }
+
+        .fw-bold {
+            font-weight: bold;
+        }
+
+        .fake-h1 {
+            font-size: 2em;
+            font-weight: 700;
+        }
+
+        .border {
+            border: 1px solid red;
+        }
+
+        /* 중요! align : 좌로 우 중앙 정렬 */
+        .align-right {
+            text-align: right;
+        }
+
+        .align-center {
+            text-align: center;
+        }
+
+        .align-left {
+            text-align: left;
+        }
+
+        /* justify : 좌우 정렬 (깔끔해짐) */
+        .align-justify {
+            text-align: justify
+        }
+
+        /* spacing : 글자 간격 */
+        .spacing {
+            letter-spacing: 0.01em;
+            text-align: justify;
+        }
+
+        /* line-height : 세로 간격 */
+        .lh {
+            line-height: 300%;
+        }
+
+        /* 세로 정렬 방법중 하나 */
+        .middle {
+            border: 1px solid red;
+            height: 200px;
+            line-height: 200px;
+            text-align: center;
+        }
+
+        /* 중요! nowrap : 제한 없이 출력 + 응용 방법 */
+        .nowrap {
+            border: 1px solid red;
+            width: 50vw;
+
+            white-space: nowrap;
+            overflow: hidden;
+            /*튀어 나온 것 숨기기 */
+            text-overflow: ellipsis;
+            /*점젖점점점점*/
+        }
+
+
+        .text {
+            border: 1px solid red;
+            width: 200px;
+        }
+
+        /* break-word: 한 단어가 너무 길면 혼자만 튀어나오니 
+        단어 중간이여도 다음줄로 넘기는 기능 */
+        .word-wrap {
+            word-wrap: break-word;
+
+        }
+
+        /* break-all : 강제로 다음줄로 넘기는 것 + 좌우 정렬 */
+        .word-break {
+            word-break: break-all;
+        }
+
+        /* underline: 밑줄 */
+        div.td1{
+            text-decoration: underline; /*none*/
+        }
+        /* line-through: 취소선 */
+        div.td2{
+            text-decoration: line-through; /*none*/
+        }
     </style>
 </head>
 
@@ -52,9 +151,71 @@
     <div class="fw-1000">1000</div>
     <div class="fw-2000">2000</div>
     <div class="fw-bold">bold</div>
-
+    <hr>
     <h1>h1</h1>
-    <div class="fake-h1">fake-h1</div>
+    <div class="fake-h1">h1</div>
+    <hr>
+    <div class="align-right border">align-right</div>
+    <div class="align-center border">align-center</div>
+    <div class="align-left border">align-left</div>
+
+    <div class="align-justify">
+        Lorem ipsum dolor, sit amet consectetur
+        adipisicing elit. Sit quis quibusdam dicta expedita
+        amet ipsam voluptate fuga asperiores. Iusto sit, modi
+        numquam autem aspernatur distinctio? Voluptates iste
+        commodi blanditiis sed?
+    </div>
+    <!-- 중요! div 공간이 없어서 (인라인 태그라서) 정렬을 한 것임에도 정렬이 안된 것처럼 보인다. -->
+    <a href="asdf" class="align-right border">a 태그</a>
+    <div a href="asdf" class="align-right border">a 태그</a></div>
+
+    <div class="spacing">
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+        Illo, fugiat. Nemo maxime exercitationem architecto, explicabo
+        odit quam asperiores quis, quos facilis quia possimus. Asperiores
+        deserunt maiores quam omnis. Laboriosam, beatae!
+    </div>
+    <div class="lh">
+        첫 줄<br>
+        둘째 줄
+    </div>
+    <div class="middle">
+        세로 중앙 하단 정렬
+    </div>
+
+    <hr>
+
+    <div class="nowrap" title="Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
+        Accusamus, ullam quasi. Aliquam quisquam omnis, beatae eaque 
+        voluptas nihil commodi consequuntur ea quia exercitationem aspernatur, 
+        nam atque harum? Omnis, rem nihil?">
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+        Accusamus, ullam quasi. Aliquam quisquam omnis, beatae eaque
+        voluptas nihil commodi consequuntur ea quia exercitationem aspernatur,
+        nam atque harum? Omnis, rem nihil?
+    </div>
+
+
+    <div class="text word-wrap">
+        kljj;;;;;;;;;;;;;;;;;;;jklsjdfklajkfsdkf
+        fdsjkl
+        sdflk;ajksldjfskla;jfkl;sajfkldsa;jfkldsfklsajl
+        sdjfklasjdlkfjsklfjsd
+    </div>
+    <div class="text word-break">
+        kljj;;;;;;;;;;;;;;;;;;;jklsjdfklajkfsdkf
+        fdsjkl
+        sdflk;ajksldjfskla;jfkl;sajfkldsa;jfkldsfklsajl
+        sdjfklasjdlkfjsklfjsd
+    </div>
+
+    <div class="td1">
+        글씨 몇자1
+    </div>
+    <div class="td2">
+        글씨 몇자2
+    </div>
 </body>
 
 </html>

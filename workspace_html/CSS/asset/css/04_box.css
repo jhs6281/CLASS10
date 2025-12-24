@@ -1,0 +1,142 @@
+div.first {
+    border: 1px solid red;
+    width: 150px;
+    height: 200px;
+}
+
+/* margin, padding, border : 문법 */
+div.second {
+    /* border: 1px solid red; */
+    width: 150px;
+    height: 200px;
+
+
+
+    /* margin : 상하좌우 각 적용 */
+    margin-top: 50px;
+    margin-right: 40px;
+    margin-bottom: 30px;
+    margin-left: 20px;
+
+    /* 4개 : top부터 시계방향으로 적용 */
+    margin: 50px 40px 30px 20px;
+    /* 3개 : top, 좌우, bottom */
+    margin: 50px 30px 20px;
+    /* 2개 : 상하, 좌우 */
+    margin: 50px 30px;
+    /* 1개 : 4방향 */
+    margin: 40px;
+
+    padding-top: 20px;
+    padding-right: 15px;
+    padding-bottom: 10px;
+    padding-left: 5px;
+
+    padding: 40px;
+
+    border-top-width: 3px;
+    border-top-style: dotted;
+    border-top-color: blue;
+
+    border-right: 2px dashed green;
+
+    border: 1px solid red;
+
+    border-radius: 50px;
+}
+
+/* radius로 카톡 프로필 모양 만드는 방법 예시 */
+.profile img {
+    border: 1px solid #000;
+
+    width: 200px;
+    height: 200px;
+
+    border-radius: 50%;
+}
+
+/* radius로 채팅창 모양 만들기 예시 */
+.chat-right {
+    border: 1px solid black;
+    background-color: yellow;
+
+    width: 100px;
+    padding: 5px;
+    margin: 10px;
+
+    text-align: center;
+
+    border-radius: 0 10px 10px 10px;
+}
+
+.width {
+    border: 1px solid red;
+    width: 70%;
+
+    /* 줄어드는 최소값 고정하기  */
+    min-width: 500px;
+    max-width: 600px;
+}
+
+/* 좌우 가운데 전체 정렬(택스트 외에도) */
+#auto {
+    border: 1px solid red;
+    width: 100px;
+
+    margin: 0 auto;
+}
+
+/* 
+마진 중첩:
+세로 방향으로 붙어 있을 때, or 부모와 첫번째 자식 간에
+margin이 더해지지 않고 큰 값 하나만 적용되는 현상 
+
+해결 방법:
+1. border or padding으로 테두리를 준다.
+2. 컨텐츠 적기(span 태그, 폰트사이즈: 0 가능)
+3. overflow: hidden 사용 하기
+*/
+
+#div1,
+#div2,
+#div3 {
+    border: 1px solid red;
+}
+
+#div2,
+#div3 {
+    margin: 30px;
+}
+
+#div3 {
+    margin: 50px;
+}
+
+#div1 {
+    margin: 10px;
+    /* padding: 1px; */
+    /* overflow: hidden; */
+}
+#div2 {
+    /* margin-top: -1px; */
+}
+
+/* 기본 값 없애기 */
+body {
+    margin: 0;
+}
+
+.box {
+    border: 10px solid red;
+    width: 300px;
+    height: 300px;
+    margin: 10px;
+    
+}
+
+.box-sizing {
+
+    padding : 50px;
+    box-sizing : border-box;
+    overflow: hidden;
+}

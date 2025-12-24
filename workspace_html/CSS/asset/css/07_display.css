@@ -1,0 +1,84 @@
+#div1 {
+    border: 1px solid red;
+}
+
+.block {
+    border: 1px solid red;
+    width: 50px;
+    height: 50px;
+    /* 상하 깂은 0 좌우는 자동 정렬 / 그냥 auto 입력 시, 상하좌우 auto로 한다는 뜻이라 0 auto;라고 적는다 */
+    margin: 0 auto;
+
+}
+
+.inline {
+    border: 1px solid red;
+
+
+    /* inline의 특징: 너비 높이를 줄 수 없다 */
+    width: 200px;
+    height: 100px;
+
+    /* margin, padding : 좌우만 적용 / 상하는 안됨 */
+    margin: 30px 50px;
+
+    /* 영역이 없지만, border등은 표시되므로 존재하지 않지만 눈에만 보이는 가짜 영역임 */
+    padding: 30px 50px;
+
+    /* display: block; */
+    background: green;
+}
+
+.parent {
+    border: 1px dotted rgb(144, 110, 217);
+    /* width: 800px; */
+    text-align: center;
+}
+
+
+.parent>div {
+    border: 1px solid red;
+    /* 중요! 블럭의 장점을 가진 인라인 속성*/
+    display: inline-block;
+    width: 300px;
+    height: 50px;
+
+    margin: 30px;
+    padding: 50px;
+}
+
+.parent2 {
+    border: 1px dotted rgb(144, 110, 217);
+    font-size: 0;
+}
+
+.parent2>div {
+    display: inline-block;
+    width: 300px;
+    height: 50px;
+
+    border: 1px solid red;
+    /* 기깔나게 정렬해줌. 대신 inline, inline-block만 통함 */
+    vertical-align: top;
+
+    font-size: 16px;
+}
+
+.hide:hover {
+    /* display none: 가리는 방법 */
+    display: none;
+}
+
+.table {
+    display: table;
+}
+
+.table .td {
+    
+    border: 1px solid red;
+    height: 100px;
+
+    vertical-align: middle;
+    /* 테이블 셀 형식으로 바꿔준다 = 세로 정렬이 된다. */
+    display: table-cell;
+}
