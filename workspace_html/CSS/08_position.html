@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="asset/css/08_position.css">
+</head>
+
+<body id="TOP">
+    <div class="parent">
+        <div>T</div>
+        <div>H</div>
+        <div>A</div>
+        <div>N</div>
+        <div>K</div>
+        <div>S</div>
+    </div>
+
+    <!-- 나중에 실습할 건데 그냥 여기 둠 -->
+    <div class="sticky">
+        스티키: 메뉴1 메뉴2
+    </div>
+
+
+    relative
+    <div class="parent">
+        <div>T</div>
+        <div class="relative">H</div>
+        <div>A</div>
+        <div>N</div>
+        <div>K</div>
+        <div>S</div>
+    </div>
+
+    <div class="parent">
+        <div>T</div>
+        <div class="absolute">H</div>
+        <div class="relative">A</div>
+        <div>N</div>
+        <div class="abs-bottom">K</div>
+        <div>S</div>
+    </div>
+
+    <div class="parent2 rel">
+        <div>위</div>
+        <div class="child2 abs">
+            가운데 <br>
+            두 줄
+        </div>
+        <div>아래</div>
+    </div>
+    <a href="#TOP">
+        <div class="fixed">
+            TOP
+        </div>
+    </a>
+
+    <div class="parent2">
+        <div class="rel z1">1번</div>
+        <div class="rel z2">2번</div>
+        <div class="rel z3">3번</div>
+    </div>
+    
+</body>
+
+</html>

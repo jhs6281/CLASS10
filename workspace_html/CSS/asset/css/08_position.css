@@ -1,0 +1,120 @@
+body{
+    height: 200vh;
+}
+.parent{
+    margin-bottom:30px;
+}
+.parent>div{
+    display:inline-block;
+    height:50px;
+    width:50px;
+    border:1px solid lightgray;
+    text-align: center;
+    color:white;
+    background-color: red;
+    line-height: 50px;
+}
+
+.parent .relative{
+    /* 원래 위치를 기준으로 이동 
+    top, left, right, bottom 연동
+    원래 공간이 유지된다.
+    */
+    position: relative;
+    top: -20px;
+    left: 10px;
+
+    /* 퍼센트도 가능 */
+    /* left:50%; */
+}
+
+.parent .absolute{
+    /* 브라우저 뷰 포트 기준 좌표값 */
+    
+    /* 부모중에 relative(없으면 body) 기준으로 이동 
+     원래 내 공간은 없어진다 (block 자체가 사라짐)*/
+
+     /* 브라우저 뷰포트 기준으로 이동하며
+     브라우저 크기를 변경하면 재출력한다. */
+    position:absolute;
+    /* top:0;
+    left: 0; */
+    background-color: rgba(0, 0, 0, 0.164);
+    top: 30px;
+    /* left: -350px; */
+}
+
+.parent .abs-bottom{
+    position: absolute;
+    bottom: 0;
+}
+
+.parent2{
+    border: 1px solid red;
+    width: 100px;
+    color: white;
+    background-color: green;
+    
+}
+.rel{
+    position: relative;
+}
+
+.child2{
+    background-color: rgba(0,0,255,0.5);
+}
+
+.abs{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+
+/* 최상단으로 이동하기 */
+.fixed{
+    border: 1px solid red;
+    width:60px;
+    height:60px;
+    line-height: 60px;
+    text-align: center;
+
+    position:fixed;
+    right: 10px;
+    bottom:10px;
+
+    background-color: rgb(190, 147, 230);
+}
+
+/* 보이지 않게 될 때부터 fixed처럼 따라온다. 상단메뉴 등*/
+.sticky{
+    position: sticky;
+    top:20px;
+}
+
+.z1 {
+background-color: hotpink;
+
+top:5px;
+left: 20px;
+height: 50px;
+
+z-index: 2;
+}
+.z2:hover{
+background-color: rgb(128, 235, 243);
+
+top:-5px;
+left: 30px;
+height: 50px;
+box-shadow: 0 0 10px lightgray;
+
+/* 레이어 값을 정해줌 */
+z-index : 50;
+}
+.z3 {
+background-color: rgb(91, 124, 1);
+
+top:-40px;
+left: 10px;
+height: 50px;
+}

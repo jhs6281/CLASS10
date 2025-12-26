@@ -1,0 +1,78 @@
+body {
+    margin: 0;
+}
+
+.wrap {
+    /* border: 1px solid black; */
+    text-align: center;
+}
+
+.wrap .container {
+    display: inline-block;
+    vertical-align: top;
+
+    margin-top: 50px;
+    margin-left: 20px;
+
+    /* border: 1px solid red; */
+    width: 40vw;
+    height: 100vh;
+}
+
+.wrap .container .img1 {
+    background-image: url(https://images03.nicepage.com/c461c07a441a5d220e8feb1a/0dedaa8602ba5d6d818dec9f/houseofsilencemariamarinina03.jpg);
+    background-size: cover;
+
+    width: 100%;
+    height: 80%;
+}
+
+.wrap .container .text1 {
+    text-align: left;
+    font-size: 3.0em;
+    font-weight: 700;
+}
+
+.wrap .container .text2 {
+    text-align: left;
+    font-size: 15px;
+}
+
+.container .img2 {
+    display: inline-block;
+    margin-top: 150px;
+
+    height: 40%;
+    width: 45%;
+
+    background-image: url(https://images03.nicepage.com/c461c07a441a5d220e8feb1a/42568883ba365e639e3fc0a9/0f9a91f61af2dac432841181deef820c.jpg);
+    background-size: cover;
+}
+
+.container .img3 {
+    display: inline-block;
+    vertical-align: bottom;
+
+    margin-left: 5%;
+
+    height: 30%;
+    width: 45%;
+
+    background-image: url(https://images03.nicepage.com/c461c07a441a5d220e8feb1a/2dd335aa72b0516cb1df543c/22c7537e24e94a7b5fc4c74be769544a.jpg);
+    background-size: cover;
+    background-position: center center;
+
+}
+
+.container .img4 {
+    margin-top: 5%;
+    margin-left: 2%;
+
+    background-image: url(//images03.nicepage.com/c461c07a441a5d220e8feb1a/add58d50d86d5fb4a773eff5/0ee610f6080f69b8179888943e49b794.jpg);
+    background-size: cover;
+    /* 이미지 위치는 안맞음 */
+    background-position: center center;
+
+    height: 35%;
+    width: 85%;
+}
