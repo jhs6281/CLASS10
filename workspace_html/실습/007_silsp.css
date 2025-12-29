@@ -1,0 +1,114 @@
+body {
+    margin: 0;
+}
+
+.test {
+    height: 5000px;
+}
+
+.toTop {
+    border: 1px solid orange;
+    background-color: rgba(252, 251, 251, 0.719);
+    width: 4%;
+    height: 4%;
+    border-radius: 15%;
+    text-align: center;
+
+    position: fixed;
+    bottom: 1%;
+    right: 1%;
+}
+
+.clearFix:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.Topmenu {
+    border: 1px solid red;
+    width: 100%;
+    text-align: center;
+    overflow: hidden;
+    position: sticky;
+    top: 0;
+
+}
+
+.Topmenu:hover + .hoveringMN {
+    display: block;
+}
+
+.hoveringMN:hover {
+    display: block;
+}
+
+.hoveringMN {
+    display: none;
+    /* 블럭이더라도 내용 덮어짐 근데 클릭 못함ㅋㅋ (자리가 없어지니까 hover를 안먹음)*/
+    /* position: absolute; */
+
+    margin-top: -2px;
+    border: 1px solid gray;
+    background-color: rgba(142, 201, 253, 0.753);
+    width: 10%;
+
+
+}
+
+.left {
+    border: 1px solid blue;
+    float: left;
+    margin-left: 1%;
+    width: 10%;
+}
+
+.logo {
+    border: 1px solid blue;
+    width: 10%;
+    display: inline-block;
+    position: relative;
+}
+
+.symbol {
+    width: 25px;
+    height: 25px;
+    border-radius: 25px;
+    background-color: black;
+
+    position: absolute;
+    top: 0;
+    left: 1%;
+}
+
+.right {
+    border: 1px solid blue;
+    float: right;
+    margin-right: 1%;
+    width: 5%;
+}
+
+.p1 {
+    border: 1px solid blue;
+    width: 200px;
+    height: 200px;
+
+    position: relative;
+}
+
+.c1 {
+    border: 1px solid red;
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    /* 중앙정렬 중간에 공백 필수 입력 */
+    top: calc((200px/2) - (100px/2));
+    left: calc(50% - (100px/2));
+}
+
+:root {
+    --menu-color:rgba(255,0,0,0.21);
+}
+.c1{
+    background-color: var(--menu-color);
+}
