@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .v {
+            /* 공간과 함께 사라진다 */
+            /* display:none; */
+            /* 공간은 존재하며 content만 사라진다 */
+            visibility: hidden;
+        }
+
+        .a:hover+.v {
+            visibility: visible;
+        }
+
+        .op {
+            opacity: 0;
+        }
+
+        .op:hover {
+            opacity: 1;
+        }
+
+        .box {
+            border: 1px solid red;
+            height: 110px;
+            width: 100px;
+            margin: 10px;
+
+        }
+
+        .of-hidden {
+            overflow: hidden;
+        }
+
+        /* 디자인적 유리하다 (블럭이 깨지지 않기 때문) */
+        .of-scroll {
+            overflow: scroll;
+        }
+
+        /* 이건 많이 안쓴다 */
+        .of-auto {
+            overflow: auto;
+        }
+
+        .parent div {
+            border : 1px solid brown;
+            display: inline-block;
+            width: 100px;
+            margin: 5px;
+            
+        }
+
+        .parent{
+            border: 1px solid blue;
+            width: 300px;
+            white-space: nowrap;
+            overflow: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="a">정답보기</div>
+    <div class="v">중</div>
+    <div>하</div>
+    <hr>
+    <div class="a">윗줄</div>
+    <div class="op">중간</div>
+    <div>아래</div>
+    <hr>
+    <div class="box of-hidden" title="로렘">
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quam esse iure perferendis, dolore dignissimos
+        corporis reiciendis repellendus voluptatem impedit excepturi velit deserunt vitae dicta id aliquam nemo sapiente
+        nam quia.
+    </div>
+    <div class="box of-scroll">
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quam esse iure perferendis, dolore dignissimos
+        corporis reiciendis repellendus voluptatem impedit excepturi velit deserunt vitae dicta id aliquam nemo sapiente
+        nam quia.
+    </div>
+    <div class="box of-auto">
+        Lorem ipsum dolor sit amet consectetur,sd
+    </div>
+
+    <div class="parent">
+        <div>항목1</div>
+        <div>항목2</div>
+        <div>항목3</div>
+        <div>항목4</div>
+        <div>항목5</div>
+    </div>
+    <br><br><br><br><br><br>
+
+</body>
+
+</html>

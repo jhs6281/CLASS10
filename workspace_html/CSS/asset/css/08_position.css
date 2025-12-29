@@ -1,9 +1,11 @@
 body{
     height: 200vh;
 }
+/* 간격 띄운 것 */
 .parent{
     margin-bottom:30px;
 }
+/* 글자 하나당 박스 만든 것 */
 .parent>div{
     display:inline-block;
     height:50px;
@@ -66,8 +68,8 @@ body{
 
 .abs{
     position: absolute;
-    top: 0px;
-    left: 0px;
+    top: 5px;
+    left: 5px;
 }
 
 /* 최상단으로 이동하기 */

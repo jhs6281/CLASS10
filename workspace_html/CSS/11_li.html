@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        ul{
+            list-style: none;
+            padding-left: 0;
+        }
+        table{
+            border : 1px solid red;
+            /* 테이블 공백 없애기 */
+            border-collapse: collapse;
+        }
+        tr{
+            /* 
+            tr에는 스타일 주는 것을 지양하자 
+            border : 1px solid blue;
+            width: 23756434567px; 
+            */
+
+            /* 높이는 존재함 
+            height: 20px;*/
+        }
+
+        td{
+            border: 1px solid orange;
+            width:20px;
+            height: 40px;
+        }
+        @keyframes textColorAnimation
+        {
+            0% {color : blue;}
+            50% {color : green;}
+            100% {color : red;}
+        }
+        span{
+            animation-name : textColorAnimation;
+            animation-duration:5s;
+            animation-iteration-count:infinite;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+    </ul>
+
+    <table>
+        <tr>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>5</td>
+            <td>6</td>
+        </tr>
+    </table>
+
+    <span>
+        이거
+    </span>
+</body>
+</html>

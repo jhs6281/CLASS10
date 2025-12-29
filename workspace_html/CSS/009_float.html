@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #float {
+            float: right;
+            border: 1px dotted black;
+            width: 8em;
+            padding: 0.25em;
+            margin: 1em;
+        }
+
+        .thumb {
+            float: left;
+            width: 120px;
+            margin: 0 15px 10px 0;
+        }
+
+        .left {
+            float: left;
+            width: 30%;
+            background: #f1f1f1;
+        }
+
+        .right {
+            float: right;
+            width: 30%;
+            background: #fafafa;
+        }
+
+        .clear {
+            clear: both;
+        }
+
+        .div3 {
+            border: 1px solid red;
+        }
+
+        .clearFix:after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+
+        .nav li {
+            float: left;
+            padding: 10px 15px;
+        }
+
+        .nav::after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+
+
+        .header {
+            text-align: center;
+        }
+
+        .logo {
+            border: 1px solid red;
+            width: 100px;
+            /* margin: 0 auto; */
+            display: inline-block;
+        }
+    </style>
+</head>
+
+<body>
+    <h3>학기말 공지</h3>
+    <hr>
+    <div>
+        <p id="float">24일은 피아니스트 조성진의 크리스마스 특별 연주가 있습니다.</p>
+        <p>이제 곧 겨울 방학이 시작됩니다.</p>
+
+        <hr>
+        <p>
+            <img src="https://cdn.discordapp.com/attachments/369847042173829121/1455063564363759638/2Q.png?ex=69535d0b&is=69520b8b&hm=f01487be2e51af84371c3ef2cd608989bf05b4b64ca099664ba3caceffabf7d9&"
+                class="thumb">
+            Lorem ipsum dolor sit amet...<br>
+            Lorem ipsum dolor sit amet...<br>
+            Lorem ipsum dolor sit amet...<br>
+        </p>
+    </div>
+    <hr>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="left">Sidebar</div>
+    <div class="right">Content</div>
+    <div class="clear"></div>
+    <div>다른내용</div>
+
+    <hr>
+    <!-- 부모값에 clearFix
+            .clearFix:after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+        공백에 블럭화 시켜서 겹쳐진 border 중첩을 내릴 수 있다.
+        그냥 clear: both를 사용할 수는 있지만, 의미를 모르겠는 태그가 늘어나기 때문에 비선호 한다.
+    -->
+    <div class="clearFix">
+        <div class="box left">div1</div>
+        <div class="box left">div2</div>
+        <div class="box right">div3</div>
+    </div>
+    <div class="div3">div4</div>
+
+    <ul class="nav">
+        <li>Home</li>
+        <li>About</li>
+        <li>Contact</li>
+    </ul>
+
+    <div class="clearFix header">
+        <div class="left">왼쪽</div>
+        <div class="logo">중앙</div>
+        <div class="right">오른쪽</div>
+    </div>
+</body>
+
+</html>
