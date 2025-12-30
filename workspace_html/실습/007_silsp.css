@@ -29,13 +29,11 @@ body {
     border: 1px solid red;
     width: 100%;
     text-align: center;
-    overflow: hidden;
     position: sticky;
     top: 0;
-
 }
 
-.Topmenu:hover + .hoveringMN {
+.menu:hover .hoveringMN {
     display: block;
 }
 
@@ -45,26 +43,28 @@ body {
 
 .hoveringMN {
     display: none;
-    /* 블럭이더라도 내용 덮어짐 근데 클릭 못함ㅋㅋ (자리가 없어지니까 hover를 안먹음)*/
-    /* position: absolute; */
+    position: absolute;
+    z-index: 2;
 
-    margin-top: -2px;
+    margin-top: -1px;
     border: 1px solid gray;
     background-color: rgba(142, 201, 253, 0.753);
     width: 10%;
 
-
+    list-style: none;
+    padding-left: 0px;
+    text-align: left;
 }
 
 .left {
-    border: 1px solid blue;
+    /* border: 1px solid blue; */
     float: left;
     margin-left: 1%;
     width: 10%;
 }
 
 .logo {
-    border: 1px solid blue;
+    /* border: 1px solid blue; */
     width: 10%;
     display: inline-block;
     position: relative;
@@ -82,7 +82,7 @@ body {
 }
 
 .right {
-    border: 1px solid blue;
+    /* border: 1px solid blue; */
     float: right;
     margin-right: 1%;
     width: 5%;
@@ -94,6 +94,7 @@ body {
     height: 200px;
 
     position: relative;
+    z-index: 0;
 }
 
 .c1 {

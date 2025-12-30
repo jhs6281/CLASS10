@@ -1,0 +1,77 @@
+.wrap {
+    border: 2px solid rgb(82, 255, 105);
+    width: 50%;
+    height: 60%;
+
+    padding-top: 50px;
+    padding-left: 10px;
+}
+
+.container1 {
+    border: 2px solid red;
+    width: 100px;
+    height: 500px;
+
+    background-position: center;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.select {
+    border: 2px solid blue;
+    width: 100px;
+    height: 100px;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.img1 {
+    background-image: url(//thumbnail.coupangcdn.com/thumbnails/remote/492x492ex/image/retail/images/3990772454529828-42ed8ea1-e25e-41d7-b90e-100ffb9c67b8.png);
+    
+}
+.img1:hover .boximg1 {
+    display:block;
+}
+
+.img2 {
+    background-image: url(//thumbnail.coupangcdn.com/thumbnails/remote/492x492ex/image/retail/images/131144224610411-0dfbb23a-32d5-40fb-87fc-09fa7b8a2234.png);
+}
+.img2:hover .boximg2 {
+    display:block;
+}
+
+.img3 {
+    background-image: url(//thumbnail.coupangcdn.com/thumbnails/remote/48x48ex/image/retail/images/1725206830231246-efe5b1b0-d557-4a18-a361-ea0ede4a82af.png);
+}
+.img3:hover .boximg3 {
+    display:block;
+}
+
+.box {
+    border: 3px solid rgb(127, 0, 153);
+    width: 400px;
+    height: 500px;
+
+    background-repeat: no-repeat;
+    background-size: contain;
+    
+    position:absolute;
+    left: 130px;
+    top: 60px;
+    
+}
+
+.boximg1 {
+    background-image: url(//thumbnail.coupangcdn.com/thumbnails/remote/492x492ex/image/retail/images/3990772454529828-42ed8ea1-e25e-41d7-b90e-100ffb9c67b8.png);
+    display: none;
+}
+
+.boximg2 {
+    background-image: url(//thumbnail.coupangcdn.com/thumbnails/remote/492x492ex/image/retail/images/131144224610411-0dfbb23a-32d5-40fb-87fc-09fa7b8a2234.png);
+    display: none;
+}
+
+.boximg3 {
+    background-image: url(//thumbnail.coupangcdn.com/thumbnails/remote/48x48ex/image/retail/images/1725206830231246-efe5b1b0-d557-4a18-a361-ea0ede4a82af.png);
+    display:none;
+}
