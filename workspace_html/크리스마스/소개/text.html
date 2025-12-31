@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<style>
+.wrap {
+  width: 360px;
+  height: 320px;
+  border: 2px solid #444;
+  border-radius: 12px;
+  margin: 24px;
+}
+
+.header {
+  padding: 14px;
+  background: #222;
+  color: white;
+  font-weight: bold;
+  border-radius: 12px 12px 0 0;
+}
+
+.content {
+  height: 240px;
+  padding: 16px;
+  line-height: 1.6;
+  background: #fff3d9;
+
+  /* 핵심! */
+  overflow: clip;
+}
+</style>
+</head>
+
+<body>
+
+<div class="wrap">
+  <div class="header">공지 영역</div>
+
+  <div class="content">
+    이 영역은 overflow: clip 이라<br>
+    넘친 텍스트가 완전히 잘림<br><br>
+
+    스크롤바도 안 생기고,<br>
+    내부 스크롤 영역 자체가 없음.<br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    따라서 UI 고정 & 깔끔한 레이아웃에 적합함.
+    
+  </div>
+</div>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</body>
+</html>

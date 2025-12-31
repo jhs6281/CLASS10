@@ -1,56 +1,37 @@
-body{
-    margin:0;
+body {
+    margin: 0;
 }
 
-.img_wrap{
-    /* border:1px solid red; */
-    position:relative;
-    width:100%;
-    height:100vh;
-    overflow: hidden;
-    text-align: center;
+.contain {
+    border: 1px solid red;
+    width: 100vw;
+    height: 100vh;
+
+    vertical-align: top;
+    font-size: 0;
 }
 
-.background{
-    position:absolute;
+.block {
+    border: 1px solid blue;
+    height: 100vh;
+    display: inline-block;
+    box-sizing: border-box;
+}
+
+.contain .leftMenu {
+    position:fixed;
     z-index: 0;
-    top:0;
-    left:0;
-
-    width:100%;
-    height:100%;
-    background-image: url('https://cdn.discordapp.com/attachments/902371372943159326/1455510660308926484/background.jpg?ex=6954fd6f&is=6953abef&hm=d9e9787c524f20d2c10f18569d18219a026ddf26542359078453e8adf0e0c34e&');
-    background-size: cover;
-
-    opacity: 0.6;
+    width: 35%;
+    background-color: rgb(52, 105, 88);
 }
 
-.Pc{
-    position:relative;
-    z-index: 1;
-    width:1100px;
-    height:auto;
+.contain .main {
+    /* width: 65%;
+     */
+    position: relative;
+    position:1;
+    box-sizing: border-box;
+    padding: 0px 0px 0px 520px;
 
-    display: block;
-    margin:0 auto;
+    font-size: 100px;
 }
-.display{
-    position:absolute;
-    z-index: 2;
-    top:195px;
-    left:295px;
-
-    /* border:1px solid red; */
-    width: 440px;
-    height: 330px;
-
-    transform: rotate(354deg);
-    border-radius: 10px;
-}
-
-.display iframe{
-    border:0;
-    width:100%;
-    height:100%;
-}
-
