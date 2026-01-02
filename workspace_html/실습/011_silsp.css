@@ -1,0 +1,347 @@
+body {
+    margin: 0;
+    text-align: center;
+}
+
+.clearFix:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.background1 {
+    /* border: 1px solid red; */
+    width: 100vw;
+    height: 600px;
+
+    background-image: url(https://images03.nicepage.com/a1389d7bc73adea1e1c1fb7e/9b22e6f1444b5ae785f3a267/pexelsphoto3326103.jpeg);
+    background-size: cover;
+    position: relative;
+}
+
+.background1 .topMenu {
+    border-bottom: 1px solid lightgray;
+    width: 100vw;
+    height: 60px;
+    position: relative;
+
+}
+
+.background1 .topMenu .search {
+    position: relative;
+    border: 1px solid lightgray;
+    width: 170px;
+    height: 30px;
+
+    transform: translate(0%, -50%);
+
+    position: absolute;
+    top: 50%;
+}
+
+input[type="text"] {
+    background: transparent;
+    border: none;
+    outline: none;
+}
+
+.background1 .topMenu .search .돋보기 {
+    width: 30px;
+    height: 30px;
+
+    position: absolute;
+    top: 0;
+    right: 0px;
+}
+
+.hbg {
+    /* border: 1px solid blue; */
+    width: 40px;
+    height: 40px;
+    background-image: url(https://cdn.discordapp.com/attachments/902371372943159326/1456493172753699042/Pngtreemenu_vector_icon_3722538.png?ex=69589078&is=69573ef8&hm=b6cce74506bf56a47899f55dbbec054ac2f4a6245d99db97be5e213ce4b43ab3&);
+    background-size: contain;
+
+    position: absolute;
+    top: 50%;
+    right: 0;
+
+    transform: translate(-50%, -50%);
+}
+
+.topMenu .HBcontents {
+    background-color: black;
+    opacity: 90%;
+    width: 0px;
+    height: 100vh;
+
+    position: absolute;
+    z-index: 2;
+    left: 0;
+    top: 0;
+    transition: width 0.3s;
+}
+
+.hbg:hover+.HBcontents {
+    width: 300px;
+}
+
+.background1 .contents1 {
+    background-color: white;
+    width: 350px;
+    height: 60px;
+    font-size: 36px;
+
+    position: absolute;
+    top: 60%;
+}
+
+.background1 .contents2 {
+    background-color: yellow;
+    width: 250px;
+    height: 60px;
+    font-size: 36px;
+
+    position: absolute;
+    top: 68%;
+}
+
+/* 섹션1 끝 */
+
+.flexWrap {
+    /* border: 1px solid red; */
+    height: 600px;
+    width: 900px;
+
+
+    display: inline-block;
+    text-align: center;
+    position: relative;
+    z-index: 0;
+    margin-top: 50px;
+}
+
+.yellowpad {
+    background-color: yellow;
+    width: 500px;
+    height: 600px;
+
+    display: inline-block;
+
+}
+
+.text1 {
+    border: 7px solid black;
+    background-color: white;
+    width: 380px;
+    height: 280px;
+    padding: 30px;
+
+    box-sizing: border-box;
+    position: absolute;
+    z-index: 1;
+    transform: translate(0%, -50%);
+    top: 50%;
+    left: 0%;
+}
+
+.image1 {
+    width: 400px;
+    margin-right: 5%;
+
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translate(0, -50%);
+}
+
+/* 2.5 */
+.flexbox {
+    margin-top: 100px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.flexbox .text2 {
+    box-sizing: border-box;
+    border: 7px solid black;
+    width: 300px;
+    height: 300px;
+    display: inline-block;
+    padding: 20px;
+    text-align: left;
+
+}
+
+.flexbox .text2>h1 {
+    font-size: 24px;
+    font-weight: 400;
+}
+
+.flexbox .text2>span {
+    /* font-size: 22px; */
+}
+
+.flexbox .box .image2 {
+    width: 300px;
+    height: 300px;
+    display: inline-block;
+}
+
+/* 섹션2 끝 */
+
+.background2 {
+    margin-top: 50px;
+    /* border: 1px solid blue; */
+    width: 100vw;
+    height: 90vh;
+
+    text-align: left;
+    position: relative;
+
+    background-image: url(https://images03.nicepage.com/a1389d7bc73adea1e1c1fb7e/992eb4a786e9521ea39ea995/pexelsphoto940302.jpeg);
+    background-size: cover;
+}
+
+/* 위에 무언가 중첩시킬 때는 absolute 사용 */
+.background2>.time {
+    position: absolute;
+    left: 0;
+    top: 25%;
+}
+
+.background2>.time>h1 {
+    font-weight: 400;
+}
+
+/* 섹션 3 끝 */
+.wrap {
+    /* margin-top: 50px; */
+    /* border: 1px solid red; */
+    width: 100vw;
+    height: 500px;
+}
+
+
+.wrap .yellowband {
+    margin-top: 150px;
+    width: 100%;
+    height: 230px;
+    text-align: center;
+    background-color: yellow;
+}
+
+.wrap .box2 {
+    margin-top: -100px;
+    margin-right: 15px;
+    /* border: 1px solid black; */
+    width: 500px;
+    height: 500px;
+    display: inline-block;
+
+    background-image: url(https://images03.nicepage.com/a1389d7bc73adea1e1c1fb7e/b997f5453a025796b7e011f6/pexelsphoto3659862.jpeg);
+    background-size: cover;
+}
+
+.wrap .yellowband .image4 {}
+
+.wrap .fontbl {
+    text-align: center;
+}
+
+.which {
+    font-size: 30px;
+    font-weight: 400;
+}
+
+.smalltext {
+    font-size: 14px;
+}
+
+.read-more {
+    color: white;
+    background-color: black;
+    width: 140px;
+    height: 50px;
+    line-height: 50px;
+    display: inline-block;
+}
+
+/* 섹션 4 끝 */
+
+.rescontain {
+    margin-top: 100px;
+    /* border: 1px solid green; */
+    width: 100%;
+    height: 500px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.rescontain .box3 {
+    /* border: 1px solid red; */
+    display: inline-block;
+    height: 450px;
+    width: 400px;
+
+    background-size: cover;
+}
+
+.rescontain .restaurant1 {
+    background-image: url(https://images03.nicepage.com/a1389d7bc73adea1e1c1fb7e/e5a2d57a68bc5de4b52746a3/pexelsphoto3756523.jpeg);
+
+}
+
+.rescontain .restaurant2 {
+    border: 6px solid black;
+    box-sizing: border-box;
+    padding: 40px 30px;
+    font-weight: 400;
+}
+
+.rescontain .restaurant2 .따옴표 {
+    background-size: cover;
+    background-image: url(https://cdn.discordapp.com/attachments/369847042173829121/1456572371799507059/image.png?ex=6958da3b&is=695788bb&hm=5f2b6ae28ef7c3a6617675123b724d51d9db6a83935fee2311c5f21809937367&);
+}
+
+/* 섹션 5 끝 */
+
+.lastImg {
+    /* border: 1px solid blue; */
+    margin-top: 50px;
+    width: 100%;
+    height: 650px;
+
+    position: relative;
+
+    background-image: url(https://images03.nicepage.com/a1389d7bc73adea1e1c1fb7e/3cb19967a4645debbcf2c90a/pexelsphoto3831823.jpeg);
+    background-size: cover;
+}
+
+.lastImg .logo {
+    /* border: 1px solid black; */
+    width: 120px;
+    height: 50px;
+
+    position: absolute;
+    left: 50%;
+    bottom: 15%;
+    transform: translate(-50%, 0);
+}
+
+.lastImg .logo .button {
+    /* border:1px solid black; */
+    display:inline-block;
+    width:30px;
+    height:30px;
+
+    background-image: url(https://cdn.discordapp.com/attachments/369847042173829121/1456576741693853756/halloween-card.png?ex=6958de4d&is=69578ccd&hm=85bbd1b0f878b9f5487828a8d941010c74b9db13e800a94125e72e3228c63cb6&);
+    background-size: cover;
+}
+
+.lastImg .text {
+    font-size: 28px;
+    position: absolute;
+    left: 50%;
+    bottom: 10%;
+    transform: translate(-50%, 0);
+}

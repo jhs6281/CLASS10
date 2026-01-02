@@ -19,19 +19,48 @@ body {
 }
 
 .contain .leftMenu {
-    position:fixed;
+    position: fixed;
     z-index: 0;
-    width: 35%;
+    width: 40%;
     background-color: rgb(52, 105, 88);
 }
 
 .contain .main {
-    /* width: 65%;
-     */
-    position: relative;
-    position:1;
-    box-sizing: border-box;
-    padding: 0px 0px 0px 520px;
-
-    font-size: 100px;
+    margin-left: 40%;
+    padding: 50px 50px;
+    width: 60%;
+    font-size: 30px;
 }
+
+@media screen and (max-width: 600px) {
+    .contain .leftMenu {
+        position: relative;
+        width: 100%;
+    }
+
+    .contain .main {
+        margin:0;
+        width: 100%;
+    }
+}
+
+@media screen and (min-width: 1440px) {
+    .contain .leftMenu {
+        position: relative;
+        width: 100%;
+    }
+        .contain .main {
+        margin-left: 0;
+        width: 100%;
+    }
+}
+
+.contain .leftMenu .photo{
+    position: relative;
+    z-index: 1;
+
+    border: 1px solid red;
+    width : 50px;
+    height : 50px;
+}
+
