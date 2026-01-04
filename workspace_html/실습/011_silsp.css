@@ -12,11 +12,13 @@ body {
 .background1 {
     /* border: 1px solid red; */
     width: 100vw;
-    height: 600px;
+    height: 90vh;
 
     background-image: url(https://images03.nicepage.com/a1389d7bc73adea1e1c1fb7e/9b22e6f1444b5ae785f3a267/pexelsphoto3326103.jpeg);
     background-size: cover;
     position: relative;
+
+    min-height: 639px;
 }
 
 .background1 .topMenu {
@@ -107,26 +109,15 @@ input[type="text"] {
 
 /* 섹션1 끝 */
 
-.flexWrap {
-    /* border: 1px solid red; */
-    height: 600px;
-    width: 900px;
-
-
-    display: inline-block;
-    text-align: center;
-    position: relative;
-    z-index: 0;
-    margin-top: 50px;
-}
-
 .yellowpad {
     background-color: yellow;
     width: 500px;
     height: 600px;
-
+    margin-top: 50px;
+    position: relative;
+    z-index: 0;
+    text-align: center;
     display: inline-block;
-
 }
 
 .text1 {
@@ -135,13 +126,9 @@ input[type="text"] {
     width: 380px;
     height: 280px;
     padding: 30px;
-
     box-sizing: border-box;
-    position: absolute;
-    z-index: 1;
-    transform: translate(0%, -50%);
-    top: 50%;
-    left: 0%;
+    /* 미디어 태그, 반응형 수정 */
+    transform: translate(-90%, 50%);
 }
 
 .image1 {
@@ -151,7 +138,7 @@ input[type="text"] {
     position: absolute;
     right: 0;
     top: 50%;
-    transform: translate(0, -50%);
+    transform: translate(10%, -50%);
 }
 
 /* 2.5 */
@@ -161,11 +148,14 @@ input[type="text"] {
     justify-content: space-between;
 }
 
+/* 미디어 태그 , 블럭 반응형 수정필요  */
 .flexbox .text2 {
     box-sizing: border-box;
     border: 7px solid black;
-    width: 300px;
-    height: 300px;
+    width: 23%;
+    height: auto;
+    max-height: 350px;
+    min-width: 220px;
     display: inline-block;
     padding: 20px;
     text-align: left;
@@ -177,14 +167,17 @@ input[type="text"] {
     font-weight: 400;
 }
 
-.flexbox .text2>span {
-    /* font-size: 22px; */
+.box {
+    /* border: 1px solid red; */
+    width: 23%;
+    height: auto;
+    max-height: 350px;
+    min-width: 220px;
 }
 
 .flexbox .box .image2 {
-    width: 300px;
-    height: 300px;
-    display: inline-block;
+    width: 100%;
+    height: 100%;
 }
 
 /* 섹션2 끝 */
@@ -192,33 +185,29 @@ input[type="text"] {
 .background2 {
     margin-top: 50px;
     /* border: 1px solid blue; */
-    width: 100vw;
+    width: 100%;
     height: 90vh;
 
     text-align: left;
+
     position: relative;
 
     background-image: url(https://images03.nicepage.com/a1389d7bc73adea1e1c1fb7e/992eb4a786e9521ea39ea995/pexelsphoto940302.jpeg);
     background-size: cover;
+    background-position: 50% 50%;
+    vertical-align: middle;
 }
 
-/* 위에 무언가 중첩시킬 때는 absolute 사용 */
-.background2>.time {
-    position: absolute;
-    left: 0;
-    top: 25%;
-}
-
-.background2>.time>h1 {
+.background2>h2 {
     font-weight: 400;
+    font-size: 2rem;
+    padding-top: 15%;
 }
 
 /* 섹션 3 끝 */
 .wrap {
-    /* margin-top: 50px; */
-    /* border: 1px solid red; */
-    width: 100vw;
-    height: 500px;
+    width: 100%;
+    /* height: 500px; */
 }
 
 
@@ -244,17 +233,27 @@ input[type="text"] {
 
 .wrap .yellowband .image4 {}
 
-.wrap .fontbl {
-    text-align: center;
+@media screen and (max-width: 900px) {
+    .wrap .box2 {
+        margin-top: 50px;
+        margin-right: 0px;
+
+        width: 500px;
+        height: 500px;
+        display: block;
+    }
 }
 
+/* 섹션 4 끝 */
+
 .which {
-    font-size: 30px;
+    margin-top: 15%;
+    font-size: 2.5em;
     font-weight: 400;
 }
 
 .smalltext {
-    font-size: 14px;
+    font-size: 1.0em;
 }
 
 .read-more {
@@ -266,7 +265,7 @@ input[type="text"] {
     display: inline-block;
 }
 
-/* 섹션 4 끝 */
+/* 섹션 5 끝 */
 
 .rescontain {
     margin-top: 100px;
@@ -280,8 +279,8 @@ input[type="text"] {
 .rescontain .box3 {
     /* border: 1px solid red; */
     display: inline-block;
-    height: 450px;
-    width: 400px;
+    height: auto;
+    width: 32%;
 
     background-size: cover;
 }
@@ -294,13 +293,18 @@ input[type="text"] {
 .rescontain .restaurant2 {
     border: 6px solid black;
     box-sizing: border-box;
-    padding: 40px 30px;
+    padding: 4% 2%;
     font-weight: 400;
 }
 
-.rescontain .restaurant2 .따옴표 {
+.rescontain .restaurant2 section .따옴표 {
     background-size: cover;
     background-image: url(https://cdn.discordapp.com/attachments/369847042173829121/1456572371799507059/image.png?ex=6958da3b&is=695788bb&hm=5f2b6ae28ef7c3a6617675123b724d51d9db6a83935fee2311c5f21809937367&);
+}
+
+.rescontain .restaurant2 section h2,
+.name {
+    font-weight: 300;
 }
 
 /* 섹션 5 끝 */
@@ -330,9 +334,9 @@ input[type="text"] {
 
 .lastImg .logo .button {
     /* border:1px solid black; */
-    display:inline-block;
-    width:30px;
-    height:30px;
+    display: inline-block;
+    width: 30px;
+    height: 30px;
 
     background-image: url(https://cdn.discordapp.com/attachments/369847042173829121/1456576741693853756/halloween-card.png?ex=6958de4d&is=69578ccd&hm=85bbd1b0f878b9f5487828a8d941010c74b9db13e800a94125e72e3228c63cb6&);
     background-size: cover;
