@@ -2,9 +2,24 @@ body {
     margin: 0;
 }
 
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* 기본값 설정 */
+
+:root {
+    --white: rgb(230, 230, 230);
+
+    --MainColor: rgb(46, 64, 112);
+}
+
+/* 자주 사용할 색상 */
+
 .contain {
     border: 1px solid red;
-    width: 100vw;
+    width: 100%;
     height: 100vh;
 
     vertical-align: top;
@@ -20,9 +35,10 @@ body {
 
 .contain .leftMenu {
     position: fixed;
-    z-index: 0;
     width: 40%;
-    background-color: rgb(52, 105, 88);
+    background-color: var(--MainColor);
+    text-align: center;
+    font-size: 16px;
 }
 
 .contain .main {
@@ -30,16 +46,75 @@ body {
     padding: 50px 50px;
     width: 60%;
     font-size: 30px;
+
+    font-size: 16px;
+    font-weight: 400;
+}
+
+
+.contain .leftMenu .photo {
+    display: inline-block;
+
+    /* z-index: 1; */
+    border: 1px solid var(--white);
+    width: 300px;
+    height: 300px;
+
+    margin-top: 10%;
+    border-radius: 50%;
+
+    background-image: url();
+    background-size: cover;
+
+    transition: box-shadow 0.5s;
+}
+
+.contain .leftMenu .photo:hover {
+    box-shadow: 0px 0px 6px 3px rgb(255, 255, 255);
+}
+
+.contain .leftMenu .profile_contents {
+    border: 1px solid var(--white);
+    width: 80%;
+    height: 40%;
+    display: inline-block;
+
+    margin-top: 5%;
+    padding: 24px 32px;
+    box-sizing: border-box;
+
+    transition: box-shadow 0.5s;
+}
+.contain .leftMenu .profile_contents:hover{
+    box-shadow: 0px 0px 6px 3px rgb(255, 255, 255);
+}
+
+.contain .leftMenu .profile_contents>strong {
+    color: var(--white);
+    font-weight: 400;
+    font-size: 1.5em;
+}
+
+.contain .leftMenu .profile_contents>p {
+    color: var(--white);
+}
+
+.contain .main .Box {
+    border: 1px solid red;
+    width: 500px;
+    height: 500px;
 }
 
 @media screen and (max-width: 600px) {
     .contain .leftMenu {
         position: relative;
         width: 100%;
+        height: auto;
+        padding-bottom: 5%;
     }
 
     .contain .main {
-        margin:0;
+        margin: 0;
         width: 100%;
     }
 }
@@ -48,19 +123,34 @@ body {
     .contain .leftMenu {
         position: relative;
         width: 100%;
+        height: auto;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-bottom: 5%;
     }
-        .contain .main {
+
+    .contain .main {
         margin-left: 0;
         width: 100%;
     }
+
+    .contain .leftMenu .photo,
+    .profile_contents {
+        display: block;
+    }
+
+    .photo {
+        margin-top: 0;
+        min-width: 299px;
+        min-height: 299px;
+    }
+
+    .profile_contents {
+        width: 90%;
+        height: auto;
+    }
+
+
 }
-
-.contain .leftMenu .photo{
-    position: relative;
-    z-index: 1;
-
-    border: 1px solid red;
-    width : 50px;
-    height : 50px;
-}
-
