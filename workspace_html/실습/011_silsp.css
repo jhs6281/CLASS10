@@ -207,7 +207,7 @@ input[type="text"] {
 /* 섹션 3 끝 */
 .wrap {
     width: 100%;
-    /* height: 500px; */
+    height: 90%;
 }
 
 
@@ -220,7 +220,7 @@ input[type="text"] {
 }
 
 .wrap .box2 {
-    margin-top: -100px;
+    margin: -100px;
     margin-right: 15px;
     /* border: 1px solid black; */
     width: 500px;
@@ -235,8 +235,8 @@ input[type="text"] {
 
 @media screen and (max-width: 900px) {
     .wrap .box2 {
-        margin-top: 50px;
-        margin-right: 0px;
+        padding-top: 50px;
+        padding-right: 0px;
 
         width: 500px;
         height: 500px;
@@ -245,6 +245,9 @@ input[type="text"] {
 }
 
 /* 섹션 4 끝 */
+.text3 {
+    display: block;
+}
 
 .which {
     margin-top: 15%;
