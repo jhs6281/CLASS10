@@ -1,4 +1,4 @@
-package chat00;
+package chap00;
 
 public class Hello2 {
 	

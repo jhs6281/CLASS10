@@ -1,6 +1,6 @@
-package chat00;
+package chap02;
 
-public class Hello {
+public class Test {
 	public static void main(String[] args) {
 		float value = 50;
 		System.out.println(value+2);
