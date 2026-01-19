@@ -1,5 +1,7 @@
 package chap05;
 
+import java.util.Scanner;
+
 public class Qhrtmq_00 {
 
 	public static void main(String[] args) {
@@ -372,58 +374,142 @@ public class Qhrtmq_00 {
 		System.out.println("=================================");
 
 		// 문제 10-3
+		System.out.println("문제 10-3 임시 비밀번호 8자리 : ");
+		int[] pw = new int[8];
+		int count1, count2, count3;
 
-//		if(숫자 배열.length>=2 && 대문자 배열>=1 && 소문자 배열>=1 && pw[랜덤] != 0) { pw[랜덤] = 값 }
-		System.out.println("문제 10-3 비밀번호 : ");
-//		int[] pw = new int[8];
-//		[0][1][2]
-//				i=0; i<=3; i++
-//		j=0; j<=8; j++
-//		pw[i] != random
-//		{
-//			pw[i] = random
-//		}
-		
-//		char[0][0] aaaa = new char [2][2]; 문자
-//		char[0][1] aaaa = new char [2][2]; 숫자
-		
-//		i<8
-//		j<8 if (중복) 
-//		pw = aaaa[i][random]
-//		
-//		
-//		aaaa[0] = {0, 1};
-		
-		int[] num = new int[8];
-		int[] abc = new int[8];
-		int[] ABC = new int[8];
+		boolean flag = false;
 
-		int pwR = (int) (Math.random() * 8) + 1;
+		while (!flag) {
 
-		for (int i = 0; i < num.length; i++) {
-			int random = (int) (Math.random() * 10);
-			char code1 = (char) ((Math.random() * 26) + 97);
-			char code2 = (char) ((Math.random() * 26) + 65);
-
-			num[i] = random;
-			abc[i] = code1;
-			ABC[i] = code2; 
+			count1=0;
+			count2=0;
+			count3=0;
 			
-			System.out.print(random + " ");
-			System.out.print(code1 + " ");
-			System.out.print(code2 + " ");
+//		배열 8자리 메우면서
+			for (int j = 0; j < 8; j++) {
+//			0,1,2중 랜덤 뽑기
+				int gbb = (int) (Math.random() * 3);
+
+				// 가위,바위,보 시작
+				if (gbb == 0) {
+					int num = (int) (Math.random() * 10); // 0이면 숫자
+					pw[j] = num;
+					count1++;
+				} else if (gbb == 1) {
+					int aaa = (int) ((Math.random() * 26) + 97); // 1이면 소문자
+					pw[j] = aaa;
+					count2++;
+				} else if (gbb == 2) {
+					int AAA = (int) ((Math.random() * 26) + 65); // 2는 대문자
+					pw[j] = AAA;
+					count3++;
+				}
+
+				// 고스톱 시작
+				if (count1 >= 2 && count2 >= 1 && count3 >= 1) {
+					flag = true;
+				}
+			}
+			if (flag) {
+				for (int l = 0; l < 8; l++) {
+					if (pw[l] > 10) {
+						System.out.print((char) pw[l]);
+					} else {
+						System.out.print(pw[l]);
+					}
+				}
+			}
 		}
+
 		System.out.println();
+		System.out.println("========================================================");
+		
+		// 문제 11
 
-		abc = new int[8];
+		System.out.println("문제 11: 좌석 예약 관리");
+		Scanner scanner = new Scanner(System.in);
+		int[] seat = new int[10];
 
-		for (int i = 0; i < abc.length; i++) {
 
-			// 자동 형 변환?
+//		0누르면 깃발 들기
+		flag = false;
 
+		//시작
+		while (!flag) {
+			
+			// 메뉴 1번 방어 코드용 깃발
+			boolean numRight = false;
+			// 메뉴 3번 잔여 좌석 카운트용 변수
+			count = 0;
+			
+			// 메뉴 (스캐너 숫자 입력 받기)
+			System.out.println("메뉴 : \"1.예약 2.모든 좌석 현황 3.잔여 좌석 0.종료\" ");
+			int scan = scanner.nextInt();
+
+			//1 예약
+			if (scan == 1) {
+				while (!numRight) {
+					System.out.println("좌석 예약을 시작합니다.");
+					System.out.println("예약을 원하신다면 1번~10번 자리를 입력해주세요");
+					System.out.println("(예: 7)");
+
+					int scan2 = scanner.nextInt();
+
+					//빈 자리일 때, 0 < 입력한 숫자 < 10 일 때
+					if (scan2 > 0 && scan2 <= 10 && seat[scan2-1] == 0) {
+						seat[scan2 - 1] = 1;
+						System.out.println(scan2 + "번 자리 예약 완료!");
+						numRight = true;
+					}
+					//이미 예약된 자리일 때
+					else if (scan2 > 0 && scan2 <= 10 && seat[scan2-1] == 1) {
+						System.out.println(scan2 + "번 자리는 이미 예약되어 있습니다. ");
+						numRight = true;
+					}	
+					//방어 코드
+					else {
+						System.out.println("올바른 숫자를 입력해주세요.");
+						System.out.println();		
+					}
+				}
+			}
+			
+			//2 예약 현황
+			else if (scan == 2) {
+				for (int i = 0; i < 10; i++) {
+					if (seat[i] == 0) {
+						System.out.println(i + 1 + "번 자리: 비었음");
+					}
+					if (seat[i] == 1) {
+						System.out.println(i + 1 + "번 자리: 이미 예약된 좌석");
+					}
+				}
+			}
+
+			//3 잔여 좌석
+			else if (scan == 3) {
+
+				for (int i = 0; i < 10; i++) {
+					if (seat[i] == 0) {
+						count++;
+					}
+				}
+				System.out.println("남은 좌석 수: " + count + "자리");
+
+			}
+
+			//0 종료
+			else if (scan == 0) {
+				flag = true;
+			}
+			
+			//방어 코드
+			else {
+				System.out.println("올바른 숫자를 입력해 주세요.");				
+				System.out.println();				
+			}
 		}
-		System.out.println();
-		System.out.println("===========================");
 
 		// 문제 12
 		System.out.println("문제 12 : 로또");
@@ -434,7 +520,7 @@ public class Qhrtmq_00 {
 		// 배열만큼 돈다
 		for (int i = 0; i < lot.length; i++) {
 //			플래그 = 거짓
-			boolean flag = false;
+			flag = false;
 //			로또 랜덤 슷자 45
 			int lotto = (int) (Math.random() * 45 + 1);
 
@@ -454,6 +540,7 @@ public class Qhrtmq_00 {
 		}
 
 		System.out.println();
+		System.out.println("========================================================");
 
 		// 문제 13
 		int sum1 = 0;
