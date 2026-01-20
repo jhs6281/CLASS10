@@ -169,8 +169,6 @@ public class Array_02 {
 		System.out.println("------------문제6끝------------");
 
 //		문제7 두번째 큰 수
-//		length만큼 count, length == count 반대 
-
 		int[] q7 = new int[] { 3, 4, 7, 5, 1, 4, 6 }; // 두번째 큰 수
 		big = q7[0];
 		int second = q7[0];

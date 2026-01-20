@@ -1,4 +1,4 @@
-package sec04;
+package sec04.method02;
 
 public class Calc {
 	//메소드 선언

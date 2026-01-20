@@ -374,6 +374,8 @@ public class Qhrtmq_00 {
 		System.out.println("=================================");
 
 		// 문제 10-3
+		// 가위(카운트1)/바위(카운트2)/보(카운트3), 카운트 충족 시키면 깃발 들어
+		// 카운트(조건) 충족 못시키면 깃발 안들기. 
 		System.out.println("문제 10-3 임시 비밀번호 8자리 : ");
 		int[] pw = new int[8];
 		int count1, count2, count3;
@@ -405,16 +407,18 @@ public class Qhrtmq_00 {
 					pw[j] = AAA;
 					count3++;
 				}
-
+				
 				// 고스톱 시작
 				if (count1 >= 2 && count2 >= 1 && count3 >= 1) {
 					flag = true;
 				}
 			}
 			if (flag) {
-				for (int l = 0; l < 8; l++) {
+				for (int l = 0; l < pw.length; l++) {
+					//정교하진 않음 (대충 10 이상이면 char 변환)
 					if (pw[l] > 10) {
 						System.out.print((char) pw[l]);
+						//숫자 출력
 					} else {
 						System.out.print(pw[l]);
 					}
@@ -427,6 +431,7 @@ public class Qhrtmq_00 {
 		
 		// 문제 11
 
+		//new boolean[10] 참/불로 풀 수도 있다.
 		System.out.println("문제 11: 좌석 예약 관리");
 		Scanner scanner = new Scanner(System.in);
 		int[] seat = new int[10];
@@ -517,13 +522,14 @@ public class Qhrtmq_00 {
 		int[] lot = new int[6];
 //		lot[0] = 0;
 
-		// 배열만큼 돈다
+		// 6자리 배열만큼 돈다
 		for (int i = 0; i < lot.length; i++) {
-//			플래그 = 거짓
+//			플래그는 중복 색출
 			flag = false;
-//			로또 랜덤 슷자 45
+//			로또 변수 = 랜덤 슷자 1~45
 			int lotto = (int) (Math.random() * 45 + 1);
 
+			//인덱스끼리 비교
 			for (int j = 0; j < i; j++) {
 				if (lot[j] == lotto) {
 					flag = true;
