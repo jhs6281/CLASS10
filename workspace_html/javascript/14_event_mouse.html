@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./asset/js/14_event_mouse.js"></script>
+    <style>
+        body{
+            height: 200vh;
+           }
+
+        #area{
+            margin-top: 200px;
+        }
+        #cursor{
+            position: absolute;
+        }
+        #drag{
+            border: 1px solid red;
+            height : 100px;
+            width : 100px;
+            position : absolute;
+        }
+
+
+    </style>
+</head>
+<body>
+
+
+    <div id="area" style="width:200px;height:100px;border:1px solid red;">
+        굉장히 중요해서 ctrl+c로 퍼가고 싶은 글씨
+    </div>
+
+    <div id="drag">
+        drag me
+    </div>
+
+    <div id="log"></div>
+
+    <img src="https://cdn.discordapp.com/attachments/902371372943159326/1461744477084454987/4.jfif?ex=698aa661&is=698954e1&hm=289ee548960da85f6d3a54ad489e0766a0313942783f6eb960a782d535ea2840&" 
+    id="cursor">
+</body>
+</html>

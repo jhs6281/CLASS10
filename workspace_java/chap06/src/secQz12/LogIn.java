@@ -18,7 +18,25 @@ public class LogIn {
 
 	// 12. 디테일 메인에서 아이디 / 비밀번호 / 받아서 회원가입
 	// 메인에서 받기 = 생성자로 만듦.
-
+	
+	//강사님 버전 =====================================================
+	// 회원가입
+	void join (Member logInData) {
+		this.logInData.add(logInData);
+	}
+	
+	// 로그인
+	void login2 (String id, String pw) {
+		for (int i=0; i<logInData.size(); i++) {
+			Member m = this.logInData.get(i);
+			if( m.id.equals(id) && m.pw.equals(pw) ) {
+				System.out.println("메인 페이지");
+			} else {
+				System.out.println("다시 로그인 해주세요.");
+			}
+		}
+	}
+	//==========================================================
 	void signIn(String id, String pw) {
 		// 배열 Member 타입 배열 생성, 매개 변수 맞추고
 		Member mem = new Member(id, pw);

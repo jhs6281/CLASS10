@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //문제 1
+        //study.todair@gmail.com >> study.todair
+        let str = 'study.todair@gmail.com'
+        let str2 = str.split('@')
+        console.log('문제 1 : ', str2[0])
+
+        //문제 2
+        //todair@naver.com >> to****@naver.com
+        str = 'todair@naver.com'
+        str2 = str.split('@')
+        const arr1 = [];
+        // let str3 = str2[0].replace(str2[0].substr(2),'*')
+        // console.log('substr : ', str3)
+        // 1개만 바꿔주기 때문에 무효;
+
+
+        // 2글자
+        arr1.push(str.slice(0, 2))
+
+        // *로 바꿀 것
+        let str3 = str2[0].substring(2)
+        console.log('str3 : ', str3)
+
+        // 별
+        for (let i = 0; i < str3.length; i++) {
+            arr1.push('*')
+        }
+        console.log(arr1)
+
+
+        // 골뱅이
+        arr1.push('@');
+        // 뒷부분
+        arr1.push(str2[1]);
+
+        console.log(arr1)
+
+        //합치기 출력
+        let qz2 = '';
+        for (let i = 0; i < arr1.length; i++) {
+            qz2 += arr1[i]
+        }
+        console.log(qz2)
+
+
+        //////////////////////////////////////////////////////////
+        //////////// 배열 말고 string 으로 만들기 ///////////////////
+        //////////////////////////////////////////////////////////
+
+        let qz2_ = str.slice(0, 2);
+        let qz2_1 = str.split('@');
+
+        for (let i = 2; i < qz2_1[0].length; i++) {
+            qz2_ += '*'
+        }
+        qz2_ += '@';
+        qz2_ += qz2_1[1];
+
+        console.log(qz2_)
+
+        ////////////////////////////////////////////////////////////
+        ////////////////// indexOf 로 만들기 ////////////////////////
+        ////////////////////////////////////////////////////////////
+
+        let qqz2 = str.indexOf('@') // @까지의 length
+        let qqzz2 = str.substring(0, 2) // 2글자 저장
+        for (let i = 2; i < qqz2; i++) { // @까지 *로 저장
+            qqzz2 += '*';
+        }
+        qqzz2 += '@';
+        qqzz2 += str.substring(qqz2);
+
+        console.log('indexOf : ', qqzz2);
+
+        //////////////////////////////////////////////////////////////
+        //////////////////////// substring도 완 ///////////////////////
+        //////////////////////////////////////////////////////////////
+
+
+        // 문제3
+        // 인터넷 주소 중에서 2차 도메인 출력
+        // comic.naver.com >> naver
+        // job.human.or.kr >> or >> or
+
+        //전략
+        // 스플릿
+        // 배열 -1번째 출력
+        let qz3 = 'comic.naver.com';
+        let qz_1 = qz3.split('.');
+        console.log(qz_1[qz_1.length - 2])
+
+        // 문제4
+        // 네이버 검색 url의 query string에서 검색어를 출력한다
+        // HINT : query=옆에있는 단어 
+        // https://search.naver.com/search.naver?where=nexearch&sm=top_hty&fbm=0&ie=utf8
+        // &query=1234&ackey=po4zpvmy
+        // >> 1234
+
+        // 전략:
+        // query= 찾기
+        // &까지 끊기
+        // 출력
+        let qz4 = 'https://search.naver.com/search.naver?where=nexearch&sm=top_hty&fbm=0&ie=utf8&query=1234&ackey=po4zpvmy'
+        let qz4_1 = qz4.split('&query=');
+        // console.log(qz4_1)
+        let qz4_2 = qz4_1[1].split('&');
+        console.log(qz4_2[0])
+
+        // 5번
+        const time = ('0' + new Date('2026-02-05 09:14:38').getMinutes()).slice(-2)
+        console.log('분 : ', time)
+
+        // 6번
+        const q6 = "     abc    "
+        let q06 = q6.length - q6.trim().length;
+        console.log(q06)
+
+        ///////////////////////////////////////////
+        ///////////////////////////////////////////
+
+        let qz6 = q6.split('')
+        let count = 0;
+
+        for(let i=0; i<qz6.length; i++){
+            if(qz6[i]==' '){
+                count++;
+            }
+        }
+        console.log('공백 카운트 : ', count)
+
+        ////////////////////////////////////////////
+        ////////////////////////////////////////////
+
+        /*
+    <table border = "1">
+        <tbody id = "tbody1">
+            <!-- js로 만들어서 (동적으로) 넣기
+             <tr>
+                <td> 첫째칸 </td>
+             </tr>    
+            -->
+        </tbody>
+    </table>
+    */
+
+
+
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

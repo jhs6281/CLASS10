@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        const str = '옳거니 네가 나를 알아보누나'
+
+        console.log(str
+        [0])
+        // length
+        // 문자열의 길이
+        console.log('str.length : ', str.length)
+
+        // indexOf
+        // 동일한 글씨가 있는지 확인
+        // 있으면 : 첫 글자의 index 반환
+        // 없다면 : -1
+        console.log("str.indexOf('누나')", str.indexOf('누나')) //13
+        console.log("str.indexOf('형아')", str.indexOf('형아'))
+
+        // replace
+        // 첫번째 전달인자를 두번째 전달인자로 바꿔준다
+        // 단, 처음 만나는 것만 바꿔준다
+        let str2 = str.replace('나', '너')
+        console.log('str :', str)
+        console.log('str2 :', str2)
+
+        str2 = str.replace(/나/g, '너')
+        // 정규 표현식 : 전체(g)에서 /찾을 값/ 을 찾는다.
+        console.log('str2 :', str2)
+
+        str2 = str.slice(4, 6)
+        console.log('str : ',str)
+        console.log('str2 : ',str2)
+
+        //split 찢다
+        str2 = str.split(' ') // 구분자 띄어쓰기 기준으로 자른다.
+        console.log('split : ', str2)
+
+        // substr
+        str2 = str.substr(4, 2)
+        console.log('substr : ', str2)
+
+        // substring
+        str2 = str.substring(4, 6)
+        console.log('substring : ', str2)
+
+        //trim
+        let str3 = "       1 2  3      "; //문자열의 맨 앞/뒤 공백은 빠짐
+        str2 = str3.trim()
+        console.log(`      [            ${str2}  ] `) //출력문의 공백은 존재함
+        
+    </script> 
+</head>
+<body>
+    
+</body>
+</html>

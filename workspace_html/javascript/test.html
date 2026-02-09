@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        var a = 1, a = 2, a = 3 ;
+        b = 1, b = 2, b = 3;
+
+        console.log(`a : ${a}`)
+        console.log(`b : ${b}`)
+
+        let c = 1;
+        c = 20;
+        console.log(`c : ${c}`)
+        //let = 재선언 가능
+
+        const d = 1
+        // d = 2;                           
+        console.log(`d : ${d}`)
+
+
+        let a1 = "문자"
+        let a2 = 3
+        console.log(typeof a1) //string
+        console.log(typeof a2) //number
+        
+        let b1 = 1.5;
+        let b2 = "1.5";
+        console.log(b1 == b2);
+        console.log(b1 === b2); // 값 + 타입 비교 연산자
+        
+        console.log(a1*3); // 숫자 아님 (not a number)
+        console.log(b2*3); // 문자열 숫자로 자동 변환한 결과값
+        console.log(b2-2); // 얜 계산됨
+        
+        console.log(b2+2); // 문자열 더하기로 우선순위 적용
+
+        /*
+            String a = "123";
+            int b = Integer.parseInt(a); //123 
+        */
+
+        b2 = `1.5`;
+        console.log(parseInt(b2)); // 1.5 인트 타입 > 1 
+        console.log(Number(b2)-2); // 문자를 숫자로 변환 
+        // 헷갈리지 않게 Number 함수 사용을 생활화하자. 
+
+        let c1 = '이것';
+        console.log(c1 * 2); // 에러가 아니라 NaN으로 표기됨
+        console.log(isNaN(c1*2)) // NaN이면(숫자가 아니라면) true 반환
+        
+        console.log(5/0); // 무한 계산 -> Infinity 반환 / 에러 아님
+        console.log(isFinite(5/0)) // 유한이냐?
+
+        // 리턴 타입 보이드 > 근데 바로 쓸 수 있는 (?)
+        alert(`아무거나`) // 경고창
+        // 경고창이 떠 있으면 JavaScript가 멈춘다.
+        // thread가 1개이기 때문 (단일 스레드)
+
+        let h = 20;
+        confirm('컨펌' ); // 확인 / 취소
+        // 컨펌 확인: 내용 / 컨펌 취소: break
+        console.log('confirm h : ' + h);
+        prompt('비밀번호 입력하세요');
+
+        let i = prompt('비번 입력하세요') 
+        console.log('prompt i : ' + i)
+        console.log('입력한 글씨는 ' + i + "입니다")
+
+        console.log( `입력한 글씨는 ${i}입니다`); // printf %d 문과 비슷함
+        // 양식: `문자문자 ${값} 문자문자`  
+        console.error("빨강") // 에러 만들기
+
+        let j=1, 
+            k='222asf', 
+            l;
+        // 다중 선언 한 번에 ㄱㄴ. 콤마로 구분
+
+        console.log(j, k); //콤마로 출력 추가 가능
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 화살표 함수 arrow function
+        // 익명 함수를 선언하는 문법
+
+        // 중요! 많이 쓰임!
+        const fn1 = function (a, b) {
+            console.log(a, b)
+            return a
+        }
+
+        // 익명 함수의 경우 화살표 함수로 변경할 수 있다
+        const fn2 = (a, b) => {
+            console.log(a, b)
+            return a
+        }
+
+        const fn3 = (a) => {
+            console.log(a)
+            return a
+        }
+        // 전달 인자가 하나일 경우 "만"
+        // 전달 인자의 ()를 생략할 수 있다
+
+        const fn4 = a => {
+            console.log(a)
+            return a
+        }
+
+        const fn5 = () => {
+            console.log(5)
+            return 5
+        }
+        
+        //전달 인자
+        const fn6 = (a, b) => {
+            return a + b
+        }
+        //전달 인자 2개, 중괄호 + return 생략
+        const fn7 = (a, b) => a + b
+        //전달 인자 1개, 대괄호 생략
+        const fn8 = a => a * 2
+
+
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

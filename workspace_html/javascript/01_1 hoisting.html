@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //b= 20; 생성 자리 but 읽기 전까지 자리가 생성되지 않는다.
+        // 타입을 선언하지 않는다면 script 최상단에서 생성
+        
+        // b=200; 
+        console.log(b) // undifined 에러
+        function test() {
+            let ff = 19
+            if (true) {
+                // a 생성 위치
+
+                console.log(a); // var를 읽기 전 > undifined
+
+                b = 20; // 
+                let c = 30; // 지역 변수
+                const d = 40; // 지역 변수
+                var a = 10; // var : 호이스팅 발생 !
+                //원리 : var는 함수 최상단에서 선언 (지금 위치)
+            }
+            console.log('var a : ', a); 
+            console.log('b : ', b);
+            // 밖에 있는 a,b 출력 때문에 주석
+            // console.log('let c : ', c );
+            // console.log('const d : ', d );
+        }
+
+        test();
+        // 결과값 b : 20
+
+        // console.log('var aㅁㅁ : ', a); // 실행 안됨
+        console.log('b : ' + b);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
