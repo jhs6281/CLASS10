@@ -189,6 +189,10 @@ function idpw() {
     // 단, 익명 함수는 불가능
     btn4.removeEventListener('click', btn4click)
 
+    // add - 'scroll'
+    window.addEventListener('scroll', function(){
+        console.log('window.scrollY', window.scrollY)
+    })
 
 
 }
