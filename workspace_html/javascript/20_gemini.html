@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+
+        window.addEventListener('load', function () {
+            gemini();
+        })
+
+        function gemini() {
+            const prompt = document.querySelector("#prompt")
+            document.querySelector('#ask')
+                .addEventListener('click', function () {
+                    console.log(prompt.value)
+
+                    const key = 'AIzaSyC8FzZlmf1cCbHq_3ZsXQqcoJt4sHu_L3c'
+                    const url = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent'
+
+                    const xhr = new XMLHttpRequest()
+                    xhr.open('post', url)
+
+                    xhr.setRequestHeader('x-goog-api-key', key)
+                    xhr.setRequestHeader('Content-Type', 'application/json')
+
+                    const data = {
+                        "contents": [{
+                            "parts": [{
+                                "text": prompt.value
+                            }]
+                        }]
+                    }
+                    xhr.send(JSON.stringify(data))
+                    
+
+                    xhr.onload = function () {
+                        console.log(xhr.responseText)
+                        //답변
+                        const answer = xhr.responseText
+                        const textans = JSON.parse(xhr.responseText)
+                        document.querySelector('#answer').innerHTML += 'GeMini',textans.candidates[0].content
+                        .parts[0].text
+
+
+                    }
+                }
+
+                )
+
+                
+                // document.querySelector('#ask2')
+                //     .addEventListener('click', function () {
+                //         console.log(prompt.value)
+    
+                //         const key = 'AIzaSyC8FzZlmf1cCbHq_3ZsXQqcoJt4sHu_L3c'
+                //         const url = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent'
+    
+                //         const xhr = new XMLHttpRequest()
+                //         xhr.open('post', url)
+    
+                //         xhr.setRequestHeader('x-goog-api-key', key)
+                //         xhr.setRequestHeader('Content-Type', 'application/json')
+    
+                //         const data = {
+                //             'contents': []
+                //         }
+                //         data.contents.push({
+                //             "role": 'user',
+                //             'parts': [{
+                //                 'text': prompt.value
+                //             }]
+                //         })
+    
+    
+    
+    
+                //         xhr.send(JSON.stringify(data))
+    
+                //         xhr.onload = function () {
+                //             console.log(xhr.responseText)
+                //             //답변
+                //             data.contents.push({
+                //                 "role": 'user',
+                //                 'parts': [{
+                //                     'text': xhr.responseText
+                //                 }]
+                //             })
+                //         }
+                //     }
+                // )
+        }
+
+
+
+    </script>
+</head>
+
+<body>
+    <textarea id="prompt"></textarea>
+    <br><input type="button" id="ask" value="질문하기">
+    <br><input type="button" id="ask2" value="멀티턴">
+    <div id="answer">
+
+    </div>
+</body>
+
+</html>

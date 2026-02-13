@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 배열 : 값을 순서대로 출력
+        const array = []
+
+        // json
+        // 값을 key와 value로 관리
+        // 순서는 보장하지 않는다
+
+        // json 선언
+        let json = {}
+        const v3 = 'v3'
+
+        json = {
+            'key': 'value',
+            'num': 1234,
+            'k1': 'v1',
+            k2: v3,
+            k3: function () {
+                console.log('함수 실행')
+            },
+            k4: {
+                k4_1: 'v4_1',
+                k4_2: 'v4_2'
+            }
+        }
+
+        console.log('' + json)
+        console.log(json)
+
+        // 값 접근
+        // 방법 1 : 유사 배열 
+        console.log(json['key'])
+        console.log(json['num'])
+        console.log(json['k4']['k4_1'])
+        console.log('jsonk3', json['k3']())
+
+        // debugger;
+
+        // 방법 2 : 프로퍼티처럼 접근
+        console.log('json.num', json.num)
+        console.log('k3', json.k3())
+
+        // 값 넣기
+        json.num = 123
+        console.log(json.num2) // undefinded
+        json.num2 = 222
+        console.log(json)
+
+        json.num2.secret = 222
+
+        // 네트워크 통신할 때 무조건 문자로 전송한다
+        // stringify : json을 문자열로 만들어 줌
+        // 단, 값이 함수인 것은 제외된다
+        const str = JSON.stringify(json)
+        console.log(str)
+
+        // parse : json 문법의 문자열을 json 객체로 만들어 준다
+        const json2 = JSON.parse(str)
+        console.log(json2)
+
+        // json 형태가 아니라서 오류 발생
+        // let j = JSON.parse("str")// ... not ...JSON
+        j = JSON.parse("{}")
+        j = JSON.parse("[]")
+
+        const aJson = [{
+            empno: 7788,
+            ename: 'scott'
+        }, {
+            empno: 1234,
+            ename: 'human'
+        }]
+
+        // of 문 이름 뽑아 쓰기
+        for (let emp of aJson) {
+            console.log(emp.ename)
+        }
+        // in 문 이름 뽑아 쓰기
+        for (let index in aJson) {
+            console.log(aJson[index].ename)
+        }
+
+        // json의 key를 배열로 돌려줌
+        const keys = Object.keys(json)
+        console.log(keys)
+
+        delete json.num
+        console.log(json)
+
+    </script>
+</head>
+
+<body>
+    <minsu class="1강의실"> 강의실 </minsu>
+</body>
+
+</html>
