@@ -6,10 +6,12 @@ function init() {
     document.querySelector('#login').addEventListener('click', idpw)
     document.querySelector('#order').addEventListener('click', pizza)
     addrs()
+    strong()
     todo1()
+    thumbnail()
 }
 
-
+// 문제 1번 
 function idpw() {
     const id = document.querySelector('#id')
     const pw = document.querySelector('#pw')
@@ -33,6 +35,7 @@ function idpw() {
     }
 }
 
+// 문제 2번
 function pizza() {
 
     //옵션
@@ -57,20 +60,21 @@ function pizza() {
         sum += parseInt(topping[i].value)
     }
 
-    log2.innerHTML = "합계: " + sum
+    log2.innerHTML = "총 금액: " + sum
 
     console.log()
 
     //2-2
-    log2_2.innerHTML = '주문하신 메뉴: '
-    log2_2.innerHTML += `<br>${pizza.value}<br>`
-    log2_2.innerHTML += `${size.id}<br>`
-    log2_2.innerHTML += `${edge.value}<br>`
+    log2_2.innerHTML = '주문 내역: '
+    log2_2.innerHTML += `<br>피자 종류: ${pizza.value}<br>`
+    log2_2.innerHTML += `사이즈: ${size.id}<br>`
+    log2_2.innerHTML += `엣지: ${edge.value}<br>`
     for (let i = 0; i < pizza.length; i++) {
-        log2_2.innerHTML += `${topping[i].id}<br>`
+        log2_2.innerHTML += `토핑${i + 1}: ${topping[i].id}<br>`
     }
 }
 
+// 문제 3번
 function addrs() {
     const name1 = document.querySelector('#name1')
     const name2 = document.querySelector('#name2')
@@ -90,90 +94,59 @@ function addrs() {
     })
 }
 
-//6번
+// 문제 4번
+function strong() {
+    const parent = document.querySelector('#parent4')
+    parent.addEventListener('click', function (event) {
 
-// function todo1() {
-//     const tdInput = document.querySelector('#Todo_input')
-//     const btnAdd = document.querySelector('#btnAdd')
-//     const todo = document.querySelector('.todo')
-//     /*
-//         btnAdd.addEventListener('click', function () {
-//             // 6-1
-//             todo[todo.length - 1].innerHTML +=
-//                 `<input type="checkbox" class="${todo}" value="${todo.length - 1}">
-//                             ${tdInput.value} 
-//                             <button class="delete" value="${dlt.length - 1}">삭제</button><br>`
-//                         console.log(todo.length)
-//                         })
-//     }
-//     */
-//     // innerHTML은 실패.
-//     let count = 0;
-//     btnAdd.addEventListener('click', function () {
-//         // 6-1
+        const arr = parent.querySelectorAll('.arr')
+        arr.forEach(val => {
+            val.classList.remove('bold') // 클래스 전부 제거
+        })
+        event.target.classList.add('bold') // 클릭한 것에 클래스 추가
+    })
+}
 
-//         const row = document.createElement('div')
+// 문제 5번
 
-//         // 체크박스
-//         // const chk1 = document.createElement("input")
-//         // chk1.setAttribute('type', 'checkbox')
-//         // chk1.setAttribute('value', count)
-//         // todo.append(chk1)
+// 전략: 썸네일.addEventListener('mouseover', function (event){
+// 오른쪽에 크게
+//}
+function thumbnail() {
+    const thumb = document.querySelector('#img5')
+    const img = document.querySelector('#img5_')
 
-//         const chk1 = document.createElement("input")
-//         chk1.type = 'checkbox'
-//         const br = document.createElement('br')
+    thumb.addEventListener('mouseover', function () {
+        img.classList.remove('display5')
+    })
 
-//         console.log(chk1) //테스트
+    thumb.addEventListener('mouseout', function () {
+        img.classList.add('display5')
+    })
+}
 
-//         // 내용
-//         const span = document.createElement("span")
-//         span.innerText = tdInput.value
+// 문제 6번
 
-//         console.log(span) // 테스트
-
-//         // 6-2
-//         // 삭제 버튼
-//         const dlt = document.createElement("button")
-//         dlt.value = count
-
-
-//         dlt.innerText = '삭제'
-//         todo.append(chk1, span, dlt, br)
-
-//         todo.addEventListener('click', function (e) {
-//             e.stopPropagation()
-//         })
-
-//         dlt.addEventListener('click', function () {
-//             row.remove()
-//         })
-
-
-//         count++;
-
-//     })
-//     // 6-2
-//     // dlt[dlt.length - 1].addEventListener('click', function () {
-//     //     console.log('1')
-//     //     todo[dlt.length - 1].remove()
-//     // })
 function todo1() {
-    const tdInput = document.querySelector('#Todo_input')
-    const btnAdd = document.querySelector('#btnAdd')
-    const todo = document.querySelector('.todo')
-    const dltAll = document.querySelector('#dltAll')
-    const sltAll = document.querySelector('#sltAll')
+    const tdInput = document.querySelector('#Todo_input') // todo 내용
+    const btnAdd = document.querySelector('#btnAdd') // 추가 버튼
+    const dltAll = document.querySelector('#dltAll') // 선택 삭제 버튼
+    const sltAll = document.querySelector('#sltAll') // 전체 체크박스
+    const table = document.querySelector('#board6') // 전체 테이블
 
 
+    // 6-1
     btnAdd.addEventListener('click', function () {
+        // 전략: [btnAdd] 클릭 시 [tr>td체크박스, td할일, 삭제버튼] 추가되게.
 
-        // div
-        const row = document.createElement('div')
+        // 열
+        const row = document.createElement('tr')
+        row.setAttribute('class', 'rowIdx')
 
         // 체크박스
         const chk = document.createElement('input')
         chk.type = 'checkbox'
+        chk.classList.add('chkbx')
 
         // 내용
         const span = document.createElement('span')
@@ -183,44 +156,61 @@ function todo1() {
         const del = document.createElement('button')
         del.innerText = '삭제'
 
-        const chkArr = document.querySelectorAll('.todo input[type="checkbox"]')
-
+        // 테이블>열>객체
         row.append(chk, span, del)
+        table.append(row)
 
-        todo.append(row)
-
-        del.addEventListener('click', function (e) {
-            e.stopPropagation()
+        // 6-2 삭제 버튼 클릭 시 행 삭제
+        del.addEventListener('click', function () {
             row.remove()
         })
 
-        dltAll.addEventListener('click', function () {
-            todo.replaceChildren()
-        })
-
+        // 6-3 전체선택 [인풋 -> 바뀌면] 모든 체크박스 선택/해제
         sltAll.addEventListener('change', function () {
-            chkArr
-            for (let i = 0; i < chkArr.length; i++) {
-                chkArr[i].checked = this.checked
+            // 모든 체크박스 = sltAll
+            // 개별 체크박스 = chk
+            if (sltAll.checked) {
+                chk.checked = true;
+            }
+            else {
+                chk.checked = false;
             }
         })
 
+        // 6-4 전체 선택 후 하나라도 해제되면 전체 선택도 해제/ 전체면 체크
 
-        //전체선택          
-        select1.addEventListener('change', function () {
-            const check = document.querySelectorAll('.zzz')//클래스가 zzz인애들을 변수에담음
-            //변수에 담긴것들만큼 반복 (이건전달인자 이름상관no)
-            check.forEach(function (checkbox) {//배열을 하나하나 뽑아쓰기위한 전달인자
-                if (select1.checked) { //select1이 체크되면 
-                    checkbox.checked = true//check를 체크
-                } else if (!select1.checked) {
-                    checkbox.checked = false
+        // 전략: selectAll, 배열 개별 검사 -> 해제
+        // flag 통과 -> 전체선택
+
+        chk.addEventListener('change', function () {
+            const chkbx = document.querySelectorAll('.chkbx') // 배열 길이 상시 체크
+            let flag = true; // 깃발 세우고
+            for (const item of chkbx) { // 깃발 내리면 체크(전체)해제.
+                if (!(item.checked)) {
+                    flag = false
+                    sltAll.checked = false
+                    break;
                 }
-                // if(!check.checked){
-                //     select1.checked=false
-                // }
+            } // 깃발 생존 = 전체 체크
+            if (flag) sltAll.checked = true
+        })
+
+        // 6-5 선택 삭제
+        // 전략: 선택 삭제 버튼 클릭 시 - 반복문으로 체크된 것 검사 -> if(chkbx.checked)row.remove
+        
+        dltAll.addEventListener('click', function () {
+
+            const rowIdx = table.querySelectorAll('.rowIdx') // 행 번호
+            const chkbx = document.querySelectorAll('.chkbx') // 체크박스 번호
+            // 참고: 체크박스 인덱스 == row 인덱스 / 순서대로 만들어져서 동일함
+            
+            chkbx.forEach((val, idx) => { // forEach 돌면서 번호 반환
+                // forEach idx === 체크박스 인덱스 === 행 인덱스
+                if (val.checked) rowIdx[idx].remove() 
             })
         })
+
+
     })
 }
 

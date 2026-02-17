@@ -49,7 +49,7 @@ window.addEventListener('load', function () {
         if (id.value.length <= 2) {
             alert('검색어는 두글자 이상입니다')
         } else {
-            // submit 함수
+            // 두 글자 이상만 검색 가능하게 끔
             form.submit()
         }
     })
@@ -67,12 +67,13 @@ window.addEventListener('load', function () {
         .addEventListener('click', function (event) {
             console.log('부모 클릭')
 
-            // event.target : 실제 이벤트가 발생한 DOM
+            // event.target : 실제 이벤트가 발생한 DOM(이벤트 = 클릭 / 클릭된 것(#parent>#child))
             console.log('target', event.target)
-            // event.currentTarget : 이벤트가 적용되어 있는 DOM
+            // event.currentTarget : 이벤트가 적용되어 있는 DOM (#parent)
             console.log('current-target', event.currentTarget)
 
             console.log('this', this)
+            // this는 기본적으로 window.(변수) / addevent내에서 사용하면 event.currentTarget과 같음
             console.log('this 같음?', this === event.currentTarget)
             // 화살표 arrow 함수인 경우 this를 변경하지 않음
             // 즉 this === window
@@ -95,64 +96,50 @@ window.addEventListener('load', function () {
     // 3. DOM.classList.contains('chk')로
     // 4. checkbox일 경우만 value 출력
 
-    // id가 board인 요소(테이블)를 선택
-    // → 이벤트를 부모(table)에 1개만 주기 위해 선택 (이벤트 위임)
     let board = document.querySelector('#board')
-
-
-    // board 영역 안에서 클릭이 발생하면 실행되는 이벤트 등록
     board.addEventListener('click', function (event) {
+        console.log(event.target)
 
-        // // event.target
-        // // → 실제로 "클릭된 요소"를 의미
-        // // (checkbox, td, span 등 진짜 눌린 애)
-        // console.log(event.target)
+        // contains('chk')클릭된 요소가 'chk' 클래스를 가지고 있는지 검사
+        if (event.target.classList.contains('chk')) {
+            console.log(event.target.value)
+        }
 
-
-        // // 클릭된 요소가 'chk' 클래스를 가지고 있는지 검사
-        // // classList.contains('클래스명')
-        // // 점(.) 붙이지 않는다
-        // if (event.target.classList.contains('chk')) {
-
-        //     // checkbox의 value 값 출력
-        //     // 예: <input value="10"> → 10
-        //     console.log(event.target.value)
-        // }
-        // // 5. 제목을 클릭했을 때만 내용을 출력
-
-        // if (event.target.classList.contains('title')) {
-
-        //     // checkbox의 value 값 출력
-        //     // 예: <input value="10"> → 10
-        //     console.log(event.target.innerText)
-        // }
+        // 5. 제목을 클릭했을 때만 내용을 출력
+        if (event.target.classList.contains('title')) {
+            console.log(event.target.innerText)
+        }
 
         let tr123 = document.querySelectorAll('#board tr')
         //all 쓰면 무조건 반복문 떠올리기
-
         for (let i = 0; i < tr123.length; i++) {
             tr123[i].addEventListener('click', function (event) {
+                console.log(event.target) // 클릭된 것 출력
+
+
                 //7. 제목만 출력되게
                 // console.log(event.currentTarget.querySelector('.title').textContent)
                 //8. 체크박스 눌렀을 때만 제목이 안 나오게
                 if (event.target.classList.contains('chk')) {
                     //체크 값 리턴
+                    
                 }
                 else {
-                    console.log(event.currentTarget.querySelector('.title').textContent)
+                    console.log('문제 확인: ', this.querySelector('.title').textContent)
                 }
 
             })
+
+            //체크박스를 클릭하면 부모에게 전파되지 않는 코드. (직관적이고 범용적)
             tr123[i].querySelector('input.chk')
                 .addEventListener('click', function (event) {
                     event.stopPropagation()
-
                     // 부모로 이동
                     console.log('this.parentNode : ', this.parentNode)
 
                     //9. checkbox를 클릭했을 때 제목 N 출력
                     console.log(this.parentNode.parentNode.querySelector('.title').textContent)
-                    
+
                 })
         }
 

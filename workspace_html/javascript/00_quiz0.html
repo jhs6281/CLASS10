@@ -6,6 +6,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="./asset/js/00_quiz0.js"></script>
+    <style>
+        body {
+            height: 2000px;
+        }
+
+        .bold {
+            font-weight: bold;
+        }
+
+        #img5 {
+            border: solid red 1px;
+            width: 300px;
+            height: 200px;
+            background-image: url(https://cdn.discordapp.com/attachments/902371372943159326/1461744534953267221/5.jfif?ex=6993e0ef&is=69928f6f&hm=d67210cc748897adec8c62a139c63af71d31ccea6bb0bf6a509b5b8cd06ab921&);
+            background-size: contain;
+            background-repeat: no-repeat;
+            position: relative;
+        }
+
+        #img5_ {
+            position: absolute;
+            top: 0;
+            left: 350px;
+
+        }
+
+        .display5 {
+            display: none;
+        }
+    </style>
 </head>
 
 <body>
@@ -27,54 +57,82 @@
         <option value="콤비네이션피자"> 콤비네이션피자 </option>
     </select> <br>
 
-<input id="small" type="radio" name="size" value=18000> small(18000)
-<input id="medium" type="radio" name="size" value=20000> medium(20000)
-<input id="large" type="radio" name="size" value=22000> large(22000)
-<br>
+    <input id="small" type="radio" name="size" value=18000> small(18000)
+    <input id="medium" type="radio" name="size" value=20000> medium(20000)
+    <input id="large" type="radio" name="size" value=22000> large(22000)
+    <br>
 
-<input class="edge" type="radio" name="edge" value=thin> thin(0)
-<input class="edge" type="radio" name="edge" value=치즈> 치즈(0)
-<input class="edge" type="radio" name="edge" value=에그타르트> 에그타르트(0)
-<input class="edge" type="radio" name="edge" value=소보로> 소보로(0)
-<br>
+    <input class="edge" type="radio" name="edge" value=thin> thin(0)
+    <input class="edge" type="radio" name="edge" value=치즈> 치즈(0)
+    <input class="edge" type="radio" name="edge" value=에그타르트> 에그타르트(0)
+    <input class="edge" type="radio" name="edge" value=소보로> 소보로(0)
+    <br>
 
-<input id="감자" type="checkbox" name="topping" value="2000"> 감자(2000)
-<input id="올리브" type="checkbox" name="topping" value="500"> 올리브(500)
-<input id="페퍼로니" type="checkbox" name="topping" value="1000"> 페퍼로니(1000)
-<input id="고구마" type="checkbox" name="topping" value="2000"> 고구마(2000)
-<input id="새우" type="checkbox" name="topping" value="5000"> 새우(5000)
-<input id="베이컨" type="checkbox" name="topping" value="3000"> 베이컨(3000)
-<input id="파인애플" type="checkbox" name="topping" value="500"> 파인애플(500)
-<br>
+    <input id="감자" type="checkbox" name="topping" value="2000"> 감자(2000)
+    <input id="올리브" type="checkbox" name="topping" value="500"> 올리브(500)
+    <input id="페퍼로니" type="checkbox" name="topping" value="1000"> 페퍼로니(1000)
+    <input id="고구마" type="checkbox" name="topping" value="2000"> 고구마(2000)
+    <input id="새우" type="checkbox" name="topping" value="5000"> 새우(5000)
+    <input id="베이컨" type="checkbox" name="topping" value="3000"> 베이컨(3000)
+    <input id="파인애플" type="checkbox" name="topping" value="500"> 파인애플(500)
+    <br>
 
-<input type="button" id="order" value="주문">
-<div id="log2"></div>
-<div id="log2_2"></div>
-<br>
-<!-- 문제3 -->
-<!-- 정보 1 : 이름 / 주소 -->
-<input id="name1" type="text" value="이름을 입력하세요."> 이름
-<br>
-<input id="addrs1" type="text" value="주소를 입력하세요."> 주소
-<br><br>
-<input id="name2" type="text"> 이름2
-<br>
-<input id="addrs2" type="text"> 주소2
-<br>
-<input id="check" type="checkbox"> 정보가 동일합니다.
+    <input type="button" id="order" value="주문">
+    <div id="log2"></div>
+    <div id="log2_2"></div>
+    <br>
+    <!-- 문제3 -->
+    <!-- 정보 1 : 이름 / 주소 -->
+    <input id="name1" type="text" value="이름을 입력하세요."> 이름
+    <br>
+    <input id="addrs1" type="text" value="주소를 입력하세요."> 주소
+    <br><br>
+    <input id="name2" type="text"> 이름2
+    <br>
+    <input id="addrs2" type="text"> 주소2
+    <br>
+    <input id="check" type="checkbox"> 정보가 동일합니다.
 
-<!-- 문제4 -->
-<div class="arr">인기상품순</div>
-<div class="arr">낮은가격순</div>
-<div class="arr">높은가격순</div>
-<div class="arr">신상품순</div>
+    <!-- 문제4 -->
+    <br> <br>
 
-<!-- 문제6 -->
-<input id="Todo_input" type="text" value="할 일을 적어주세요."> 
-<button id="btnAdd">추가</button> 
-<button id="dltAll">선택삭제</button>
-<input type="checkbox" id="sltAll">전체
-<div class="todo"></div>
+    <div id="parent4">
+        <div class="arr">인기상품순</div>
+        <div class="arr">낮은가격순</div>
+        <div class="arr">높은가격순</div>
+        <div class="arr">신상품순</div>
+    </div>
+    <br>
+
+    <!-- 문제 5번 -->
+    <div id="img5">
+        <div id="img5_" class="display5">
+            <img
+                src="https://cdn.discordapp.com/attachments/902371372943159326/1461744534953267221/5.jfif?ex=6993e0ef&is=69928f6f&hm=d67210cc748897adec8c62a139c63af71d31ccea6bb0bf6a509b5b8cd06ab921&">
+        </div>
+    </div>
+
+
+
+    <!-- 문제6 -->
+    <br>
+    <table id="board6">
+        <tr>
+            <td>
+                <input id="Todo_input" type="text" value="할 일을 적어주세요.">
+            </td>
+            <td>
+                <button id="btnAdd">추가</button>
+            </td>
+            <td>
+                <button id="dltAll">선택삭제</button>
+            </td>
+            <td>
+                <input type="checkbox" id="sltAll">전체
+            </td>
+        </tr>
+    </table>
+    <!-- <div class="todo"></div> -->
 
 
 </body>
