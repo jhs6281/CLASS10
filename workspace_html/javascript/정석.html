@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Bullet Hell Fixed</title>
+<style>
+body{
+margin:0;
+overflow:hidden;
+background: radial-gradient(circle at center,#101020 0%,#000 80%);
+color:white;
+font-family:Arial;
+}
+#ui{
+position:absolute;
+top:10px;
+left:10px;
+z-index:10;
+font-size:14px;
+}
+canvas{display:block;}
+</style>
+</head>
+<body>
+
+<div id="ui">
+난이도:
+<select id="difficulty">
+<option value="0.6">하</option>
+<option value="1">중</option>
+<option value="1.5">상</option>
+<option value="2">최상</option>
+</select>
+<br>
+❤️ 목숨: <span id="lives">3</span>
+<br>
+⏱ 시간: <span id="time">60</span>
+<br>
+🛡 스킬쿨: <span id="skill">0</span>
+<br>
+🏆 최고기록: <span id="record">0</span>
+<br>
+<button onclick="startGame()">시작</button>
+</div>
+
+<canvas id="game"></canvas>
+
+<script>
+const canvas=document.getElementById("game");
+const ctx=canvas.getContext("2d");
+canvas.width=window.innerWidth;
+canvas.height=window.innerHeight;
+
+let player,bullets,particles;
+let keys={};
+let lives=3;
+let gameOver=false;
+let startTime;
+let difficulty=1;
+let speedMultiplier=1;
+let skillCooldown=0;
+let invincible=false;
+let invincibleTimer=0;
+let hitInvincible=false;
+let hitTimer=0;
+let shake=0;
+let record=localStorage.getItem("record")||0;
+document.getElementById("record").innerText=record;
+
+document.addEventListener("keydown",e=>{
+if(["ArrowUp","ArrowDown","ArrowLeft","ArrowRight","Space"].includes(e.code)){
+e.preventDefault();
+}
+keys[e.code]=true;
+
+if(e.code==="Space" && skillCooldown<=0){
+invincible=true;
+invincibleTimer=2;
+skillCooldown=30;
+}
+});
+document.addEventListener("keyup",e=>keys[e.code]=false);
+
+function startGame(){
+difficulty=parseFloat(document.getElementById("difficulty").value);
+player={x:canvas.width/2,y:canvas.height/2,r:10,speed:5};
+bullets=[];
+particles=[];
+lives=3;
+gameOver=false;
+startTime=Date.now();
+speedMultiplier=1;
+skillCooldown=0;
+invincible=false;
+hitInvincible=false;
+requestAnimationFrame(loop);
+}
+
+function spawnBullet(){
+let edge=Math.floor(Math.random()*4);
+let x,y;
+let speed=(2+Math.random()*2)*difficulty*speedMultiplier;
+
+if(edge===0){x=0;y=Math.random()*canvas.height;}
+if(edge===1){x=canvas.width;y=Math.random()*canvas.height;}
+if(edge===2){x=Math.random()*canvas.width;y=0;}
+if(edge===3){x=Math.random()*canvas.height;y=canvas.height;}
+
+let angle=Math.atan2(player.y-y,player.x-x);
+bullets.push({
+x,y,
+dx:Math.cos(angle)*speed,
+dy:Math.sin(angle)*speed,
+r:5
+});
+}
+
+function createExplosion(x,y){
+for(let i=0;i<25;i++){
+particles.push({
+x,y,
+dx:(Math.random()-0.5)*8,
+dy:(Math.random()-0.5)*8,
+life:30
+});
+}
+}
+
+function update(){
+let elapsed=(Date.now()-startTime)/1000;
+let remain=60-Math.floor(elapsed);
+document.getElementById("time").innerText=remain;
+if(remain<=0){endGame(60);return;}
+
+speedMultiplier=1+Math.min(elapsed/60*4,4);
+
+if(Math.random()<0.07) spawnBullet();
+
+if(keys["ArrowUp"]) player.y-=player.speed;
+if(keys["ArrowDown"]) player.y+=player.speed;
+if(keys["ArrowLeft"]) player.x-=player.speed;
+if(keys["ArrowRight"]) player.x+=player.speed;
+
+player.x=Math.max(player.r,Math.min(canvas.width-player.r,player.x));
+player.y=Math.max(player.r,Math.min(canvas.height-player.r,player.y));
+
+bullets.forEach(b=>{
+b.x+=b.dx;
+b.y+=b.dy;
+
+let dist=Math.hypot(player.x-b.x,player.y-b.y);
+
+if(dist<player.r+b.r && !invincible && !hitInvincible){
+createExplosion(player.x,player.y);
+shake=20;
+lives--;
+document.getElementById("lives").innerText=lives;
+
+hitInvincible=true;
+hitTimer=0.5;
+
+b.x=-100;
+
+if(lives===0){
+endGame(elapsed);
+}
+}
+});
+
+particles.forEach(p=>{
+p.x+=p.dx;
+p.y+=p.dy;
+p.life--;
+});
+
+bullets=bullets.filter(b=>b.x>-50&&b.x<canvas.width+50&&b.y>-50&&b.y<canvas.height+50);
+particles=particles.filter(p=>p.life>0);
+
+if(skillCooldown>0) skillCooldown-=1/60;
+
+if(invincible){
+invincibleTimer-=1/60;
+if(invincibleTimer<=0) invincible=false;
+}
+
+if(hitInvincible){
+hitTimer-=1/60;
+if(hitTimer<=0) hitInvincible=false;
+}
+
+document.getElementById("skill").innerText=Math.max(0,skillCooldown.toFixed(1));
+}
+
+function draw(){
+let offsetX=0,offsetY=0;
+if(shake>0){
+offsetX=(Math.random()-0.5)*shake;
+offsetY=(Math.random()-0.5)*shake;
+shake*=0.9;
+}
+ctx.save();
+ctx.translate(offsetX,offsetY);
+
+ctx.fillStyle="rgba(0,0,0,0.3)";
+ctx.fillRect(0,0,canvas.width,canvas.height);
+
+ctx.fillStyle=invincible?"yellow":(hitInvincible?"white":"cyan");
+ctx.beginPath();
+ctx.arc(player.x,player.y,player.r,0,Math.PI*2);
+ctx.fill();
+
+ctx.fillStyle="red";
+bullets.forEach(b=>{
+ctx.beginPath();
+ctx.arc(b.x,b.y,b.r,0,Math.PI*2);
+ctx.fill();
+});
+
+ctx.fillStyle="orange";
+particles.forEach(p=>{
+ctx.globalAlpha=p.life/30;
+ctx.fillRect(p.x,p.y,3,3);
+ctx.globalAlpha=1;
+});
+
+ctx.restore();
+}
+
+function loop(){
+if(gameOver) return;
+update();
+draw();
+requestAnimationFrame(loop);
+}
+
+function endGame(score){
+gameOver=true;
+if(score>record){
+record=Math.floor(score);
+localStorage.setItem("record",record);
+}
+alert("게임 종료!\n버틴 시간: "+Math.floor(score)+"초");
+location.reload();
+}
+</script>
+</body>
+</html>

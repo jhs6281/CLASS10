@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Mini RPG Portal Game</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        #game {
+            position: relative;
+            width: 800px;
+            height: 500px;
+            margin: auto;
+            background: #222;
+        }
+
+        canvas {
+            background: #4caf50;
+            image-rendering: pixelated;
+        }
+
+        #message {
+            position: absolute;
+            display: none;
+            color: white;
+            font-weight: bold;
+            text-shadow: 2px 2px 0 black;
+        }
+    </style>
+    <script src="testcopy.js">
+
+    </script>
+</head>
+
+<body>
+
+    <div id="game">
+        <canvas id="gameCanvas"></canvas>
+        <div id="message">Press Enter</div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

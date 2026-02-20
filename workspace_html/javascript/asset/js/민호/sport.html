@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Sports Income Race - By Sport</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header class="header">
+        <h1>📊 Sports Income Race - 종목별</h1>
+        <nav>
+            <a href="index.html">홈</a>
+            <a href="overall.html">종합</a>
+            <a href="sport.html" class="active">종목별</a>
+        </nav>
+    </header>
+
+    <div class="sport-buttons">
+        <button onclick="setMode('농구')">농구</button>
+        <button onclick="setMode('축구')">축구</button>
+        <button onclick="setMode('복싱')">복싱</button>
+        <button onclick="setMode('골프')">골프</button>
+        <button onclick="setMode('야구')">야구</button>
+    </div>
+
+    <div class="year-container">
+        <span id="yearDisplay">1960</span>
+    </div>
+
+    <div id="chart" class="chart"></div>
+
+    <script src="data.js"></script>
+    <script src="engine.js"></script>
+    <script src="ui.js"></script>
+
+    <script>
+        preloadImages(() => {
+            startAnimation();
+        });
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Sports Income Race (1960-2025)</title>
+
+    <!-- 인스타 감성 폰트 -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+
+        <!-- 상단 타이틀 -->
+        <h1>🏆 Sports Income Race (1960–2025)</h1>
+
+        <!-- 네비게이션 -->
+        <div class="nav">
+            <button onclick="setMode('all')">종합</button>
+            <button onclick="setMode('basketball')">농구</button>
+            <button onclick="setMode('soccer')">축구</button>
+            <button onclick="setMode('boxing')">복싱</button>
+            <button onclick="setMode('golf')">골프</button>
+            <button onclick="setMode('baseball')">야구</button>
+        </div>
+
+        <!-- 현재 연도 표시 -->
+        <div id="yearDisplay">1960</div>
+
+        <!-- 그래프 영역 -->
+        <div id="chart"></div>
+
+    </div>
+
+    <script src="data.js"></script>
+    <script src="engine.js"></script>
+    <script src="ui.js"></script>
+</body>
+</html>

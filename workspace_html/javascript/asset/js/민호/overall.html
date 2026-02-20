@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Sports Income Race - Overall</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="header">
+    <h1>🏆 Sports Income Race (1960–2025)</h1>
+    <nav>
+        <a href="index.html">홈</a>
+        <a href="overall.html" class="active">종합</a>
+        <a href="sport.html">종목별</a>
+    </nav>
+</header>
+
+<div class="year-container">
+    <span id="yearDisplay">1960</span>
+</div>
+
+<div id="chart" class="chart"></div>
+
+<script src="data.js"></script>
+<script src="engine.js"></script>
+<script src="ui.js"></script>
+
+<script>
+mode = "all";
+
+preloadImages(()=>{
+    startAnimation();
+});
+</script>
+
+</body>
+</html>

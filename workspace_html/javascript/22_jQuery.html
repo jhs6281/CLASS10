@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"
+        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script>
+        // let $ = 20 jquery는 $변수에 담겨있다 
+        // $를 선언하면 jquery 사용 못함
+
+        // jQuery 변수
+        // 1. $
+        // 2. jQuery
+
+        // window.addEventListener('load', function(){
+        //     console.log('hello')
+        // })
+        // window.onload = function(){
+        //     console.log('hello')
+        // }
+
+        // $(function(){
+        //     console.log('hello')
+        // })
+
+        // $(()=>{
+        //     console.log('hello')
+        // })
+
+        $(document).ready(function () {
+            console.log('hello')
+        })
+
+        $(() => { // onload 와 같은 기능
+            init()
+        })
+
+        function init() {
+            const list_h1 = $('h1') // $('') = querySelectorAll 과 비슷한 효과
+            console.log(list_h1) // jQuery 배열 객체
+            console.log(list_h1[0]) // 첫번째 h1 dom
+
+            console.log($('adsfasdf')) // 존재하지 않는다면 0개짜리 배열
+
+            // text() : innerText와 비슷
+            $($('h1')[0]).text('첫째 바꾸기') // text가 j쿼리 문법이기 때문에 한번 더 감싸기
+            //$('h1').text('싹다 변경') // 돔.text('바꿀 내용')
+
+            $('h1').html('<a href="javascript:void(0)">a태그 </a>')
+
+            console.log($('#parent'))
+
+            // 클래스 생성: parent.classList.add('c1')와 같은 코드
+            $('#parent').addClass('c1 c2')
+
+            // 클래스 제거: parent.classList.remove('c1')와 같은 코드
+            $('#parent').removeClass('c1')
+
+            // 클래스 toggle: 없으면 추가, 있으면 제거
+            $('#parent').toggleClass('c2')
+
+            // 클래스 has: 가지고 있는지 true/false
+            connsole.log($('#parent').hasClass('c2'))
+
+            console.log($('#parent').hasClass('c2'))
+
+            // attr(): getAttribute 와 같다.
+            // 전달인자가 하나면 읽기
+            console.log($('#parent').attr('id'))
+
+            // 전달인자가 두 개면 속성 변경
+            // setAttribute 
+            $('#parent').attr('data-human', '최고에요')
+        }
+
+    </script>
+</head>
+
+<body>
+    <h1>첫번째</h1>
+    <h1>두번째</h1>
+    <h1>세번째</h1>
+
+    <div id="parent">
+        부모
+        <div class="child">
+            자식
+        </div>
+    </div>
+</body>
+
+</html>

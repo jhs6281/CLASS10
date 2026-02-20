@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Mini RPG Portal Game</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background: #222;
+        }
+
+        #game {
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+            background-color: #3aa655;
+
+            background-image:
+                linear-gradient(#2e8b57 2px, transparent 2px),
+                linear-gradient(90deg, #2e8b57 2px, transparent 2px);
+
+            background-size: 40px 40px;
+        }
+
+        /* 캐릭터 (CSS로 구현) */
+        #player {
+            width: 32px;
+            height: 48px;
+            position: absolute;
+            left: 100px;
+            top: 100px;
+        }
+
+        /* 몸통 */
+        #player .body {
+            width: 24px;
+            height: 24px;
+            background: #2f6bff;
+            position: absolute;
+            top: 18px;
+            left: 4px;
+            border-radius: 4px;
+        }
+
+        /* 머리 */
+        #player .head {
+            width: 20px;
+            height: 20px;
+            background: #ffd6b3;
+            position: absolute;
+            top: 0;
+            left: 6px;
+            border-radius: 50%;
+            box-shadow: inset -3px -3px 0 rgba(0, 0, 0, 0.2);
+        }
+
+        /* 눈 */
+        #player .eye {
+            width: 3px;
+            height: 3px;
+            background: black;
+            position: absolute;
+            top: 7px;
+            left: 6px;
+            border-radius: 50%;
+        }
+
+        #player .eye.right {
+            left: 12px;
+        }
+
+        /* 그림자 */
+        #player::after {
+            content: "";
+            width: 26px;
+            height: 6px;
+            background: rgba(0, 0, 0, 0.3);
+            position: absolute;
+            bottom: -6px;
+            left: 3px;
+            border-radius: 50%;
+        }
+
+
+
+        .portal {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: radial-gradient(circle at center,
+                    #a0faff 10%,
+                    #00ccff 40%,
+                    #0066ff 70%);
+            box-shadow: 0 0 25px #00e5ff,
+                inset 0 0 20px white;
+            animation: rotatePortal 4s linear infinite;
+        }
+
+        /* 🔥 포탈 이름 */
+        .portal-name {
+            font-family: 'Press Start 2P', cursive;
+            font-size: 20px;
+            color: #fff;
+            text-shadow: 2px 2px 0 #000;
+        }
+
+        @keyframes pixelBlink {
+            from {
+                filter: brightness(1);
+            }
+
+            to {
+                filter: brightness(1.6);
+            }
+        }
+
+        /* 포탈 위치 */
+        .portal:nth-child(2) {
+            top: 200px;
+            left: 300px;
+        }
+
+        .portal:nth-child(3) {
+            bottom: 200px;
+            right: 300px;
+        }
+
+        .portal:nth-child(4) {
+            top: 400px;
+            right: 150px;
+        }
+
+        .portal:nth-child(5) {
+            bottom: 120px;
+            left: 150px;
+        }
+
+        .portal:nth-child(6) {
+            top: 100px;
+            right: 400px;
+        }
+
+        #message {
+            position: absolute;
+            color: white;
+            font-weight: bold;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 5px 10px;
+            border-radius: 5px;
+            display: none;
+            pointer-events: none;
+        }
+
+        @keyframes glow {
+            from {
+                transform: scale(1);
+            }
+
+            to {
+                transform: scale(1.1);
+            }
+        }
+    </style>
+    <script src="999_게임.js">
+
+    </script>
+</head>
+
+<body>
+
+    <div id="game">
+        <div id="player">
+            <div class="head">
+                <div class="eye"></div>
+                <div class="eye right"></div>
+            </div>
+            <div class="body"></div>
+        </div>
+        <div id="message">Press Enter</div>
+        <div class="portal" data-link="왕재.html">
+            <span class="portal-name">왕재</span>
+        </div>
+        <div class="portal" data-link="정석바이브.html">
+            <span class="portal-name">정석</span>
+        </div>
+        <div class="portal" data-link="유빈.html">
+            <span class="portal-name">유빈</span>
+        </div>
+        <div class="portal" data-link="./asset/js/민호/index.html">
+            <span class="portal-name">민호</span>
+        </div>
+        <div class="portal" data-link="http://192.168.0.155:5558/">
+            <span class="portal-name">현일</span>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

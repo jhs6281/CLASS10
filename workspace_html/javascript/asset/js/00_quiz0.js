@@ -206,6 +206,7 @@ function todo1() {
             
             chkbx.forEach((val, idx) => { // forEach 돌면서 번호 반환
                 // forEach idx === 체크박스 인덱스 === 행 인덱스
+                // 나중에 언젠가 종속관계 여행(parentNode) 떠나서 삭제하는 것도 해보자.
                 if (val.checked) rowIdx[idx].remove() 
             })
         })
