@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        :root {
+            --SubColor: rgb(230, 230, 230);
+            --MainColor: rgb(123, 45, 210);
+            --color1: rgb(34, 178, 255);
+            --color2: rgb(201, 76, 42);
+            --color3: rgb(145, 222, 90);
+            --color4: rgb(18, 63, 124);
+            --color5: rgb(240, 155, 17);
+            --color6: rgb(99, 12, 167);
+            --color7: rgb(255, 94, 147);
+            --color8: rgb(72, 201, 176);
+        }
+
+        /* #cmt_Head {
+            clear: both;
+        }
+
+        .left {
+            float: left;
+        }
+
+        .right {
+            float: right;
+        } */
+
+        /* AI CSS */
+
+        /* 전체 컨테이너 */
+        #wrap_Cmt {
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+
+        /* 댓글 목록 영역 */
+        .cmt_Space {
+            border-top: 2px solid #333;
+            /* 상단 강조선 */
+            margin-top: 15px;
+        }
+
+        /* 댓글 한 줄(Row) */
+        .commentRow,
+        [class^="commentRow"] {
+            display: flex;
+            flex-wrap: wrap;
+            /* 대댓글창이 아래로 떨어질 수 있게 */
+            align-items: flex-start;
+            padding: 10px 5px;
+            border-bottom: 1px solid var(--BorderColor);
+            background: #fff;
+            position: relative;
+        }
+
+        /* 닉네임 스타일 */
+        em {
+            font-style: normal;
+            font-weight: bold;
+            color: var(--NickColor);
+            margin-right: 12px;
+            font-size: 13px;
+            white-space: nowrap;
+        }
+
+        /* 본문 내용 */
+        p {
+            margin: 0;
+            padding: 0;
+            flex: 1;
+            /* 중간 공간 차지 */
+            font-size: 13px;
+            color: #444;
+            line-height: 1.4;
+        }
+
+        /* 날짜와 삭제 버튼 영역 */
+        span {
+            font-size: 11px;
+            color: var(--DateColor);
+            margin-right: 8px;
+            white-space: nowrap;
+        }
+
+        /* 삭제 버튼 (x) */
+        button:not(.add_txt) {
+            background: #ccc;
+            color: #fff;
+            border: none;
+            width: 16px;
+            height: 16px;
+            font-size: 10px;
+            cursor: pointer;
+            line-height: 14px;
+            padding: 0;
+            border-radius: 2px;
+        }
+
+        button:not(.add_txt):hover {
+            background: #999;
+        }
+
+        /* 대댓글 들여쓰기 디자인 */
+        div[class^="commentRow"] div {
+            margin-left: 20px;
+            /* 들여쓰기 */
+            width: 100%;
+            border-left: 1px solid #ccc;
+            /* 세로 연결선 */
+            padding-left: 10px;
+            margin-top: 5px;
+            background: #fafafa;
+            /* 대댓글은 살짝 배경색 다르게 */
+        }
+
+        /* 대댓글 'ㄴ' 아이콘 흉내 */
+        div[class^="commentRow"] div::before {
+            content: "ㄴ";
+            color: #3b4890;
+            font-weight: bold;
+            margin-right: 5px;
+        }
+
+        .cmt {
+            width: 100%;
+            margin-top: 10px;
+            padding: 10px;
+            background: var(--SubColor);
+            border-radius: 4px;
+        }
+
+        .cmt_input {
+            width: calc(100% - 70px);
+            height: 60px !important;
+            /* 높이 조절 */
+            border: 1px solid #ccc;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+
+        .add_txt {
+            width: 60px;
+            height: 60px;
+            background: var(--MainColor);
+            color: white;
+            border: none;
+            cursor: pointer;
+            vertical-align: top;
+        }
+
+        /* gemini css */
+
+        /* 댓글 전체 컨테이너 */
+        .cmt_Space {
+            border-top: 1px solid #ddd;
+            margin-top: 20px;
+            font-size: 13px;
+            font-family: sans-serif;
+        }
+
+        /* 댓글 한 행 (부모/자식 공통) */
+        .commentRow {
+            border-bottom: 1px solid #eee;
+            padding: 10px 5px;
+            background: #fff;
+            display: flex;
+            flex-direction: column;
+            /* 내용과 답글창이 세로로 쌓이도록 */
+        }
+
+        /* 댓글 상단 정보 (닉네임, 내용, 날짜 등) */
+        .cmt_info {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .cmt_left {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* 이미지의 'L'자형 화살표 표시 */
+        .reply_icon {
+            color: #3b4890;
+            font-weight: bold;
+            margin-right: 5px;
+        }
+
+        .nickname {
+            font-weight: bold;
+            color: #333;
+            white-space: nowrap;
+        }
+
+        .content {
+            color: #555;
+            margin: 0 10px;
+            word-break: break-all;
+        }
+
+        .cmt_right {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #999;
+            font-size: 11px;
+        }
+
+        .dlt_btn {
+            cursor: pointer;
+            background: #999;
+            color: #fff;
+            border: none;
+            width: 16px;
+            height: 16px;
+            line-height: 14px;
+            text-align: center;
+            font-size: 10px;
+        }
+
+        /* 대댓글 들여쓰기 */
+        .depth_margin {
+            margin-left: 25px;
+        }
+
+        @media screen and (max-width: 600px) {
+            #wrap_Cmt {
+                border: 1px solid red;
+                width: 450px;
+            }
+
+            .cmt_input {
+                width: 85%;
+                height: 100px;
+            }
+
+        }
+    </style>
+
+    <script>
+        window.addEventListener('load', init)
+
+        function init() {
+            bind()
+        }
+
+        function createInputComment() {
+            const cmt = document.createElement('div')
+            cmt.className = 'cmt'
+
+            const txtarea = document.createElement('input')
+            txtarea.type = 'text'
+            txtarea.className = 'cmt_input'
+
+            const add_txt = document.createElement('button')
+            add_txt.className = 'add_txt'
+            add_txt.textContent = '등록'
+
+            cmt.append(txtarea, add_txt)
+            return { cmt, txtarea, add_txt }
+        }
+
+        function bind() {
+            let count = 0
+            const inputCmtarea = document.querySelector('.inputCmt')
+            const mainInput = createInputComment()
+            inputCmtarea.append(mainInput.cmt)
+
+            mainInput.add_txt.addEventListener('click', function () {
+                const val = mainInput.txtarea.value.trim()
+                if (!val) return
+                createRow(document.querySelector('.cmt_Space'), val)
+                mainInput.txtarea.value = ""
+            })
+
+            function getFormattedDate() {
+                const today = new Date()
+                const year = today.getFullYear()
+                const month = String(today.getMonth() + 1).padStart(2, '0')
+                const day = String(today.getDate()).padStart(2, '0')
+                const hour = String(today.getHours()).padStart(2, '0')
+                const minute = String(today.getMinutes()).padStart(2, '0')
+                const second = String(today.getSeconds()).padStart(2, '0')
+
+                return `${year}.${month}.${day} ${hour}:${minute}:${second}`
+            }
+
+            function createRow(parent, text) {
+                const row = document.createElement('div');
+                row.className = 'commentRow';
+
+                // 왼쪽 묶음
+                const span_left = document.createElement('span');
+                // <닉네임>
+                const nickname = document.createElement('em');
+                nickname.textContent = "사용자 ";
+                // <댓글 번호>
+                const count_CommentNum = document.createElement('span');
+                count_CommentNum.textContent = "(댓글 번호: " + count + ")";
+                // 왼쪽 묶음 조립
+                span_left.append(nickname, count_CommentNum)
+
+
+                // 중간 묶음
+                const div_middle = document.createElement('div');
+                // <내용>
+                const contents = document.createElement('p');
+                contents.textContent = text;
+                // 중간 묶음 조립
+                div_middle.append(contents)
+
+                // 오른쪽 묶음
+                const span_right = document.createElement('span');
+                // <날짜>
+                const timestamp = document.createElement('span');
+                timestamp.textContent = getFormattedDate();
+                // <삭제 버튼>
+                const dlt_cmt = document.createElement('button');
+                dlt_cmt.textContent = 'x';
+                // 오른쪽 묶음 조립
+                span_right.append(timestamp, dlt_cmt)
+
+                // [삭제 버튼 이벤트]
+                dlt_cmt.addEventListener('click', function (e) {
+                    e.stopPropagation(); // 삭제 버튼 클릭 시 답글창이 열리지 않게
+                    if (confirm("정말 삭제하시겠습니까?")) {
+                        row.remove();
+                    }
+                });
+
+                // 조립
+                row.append(span_left, div_middle, span_right);
+
+                // [중요] 답글 토글 이벤트 (무한 대댓글용)
+                row.addEventListener('click', function (e) {
+                    e.stopPropagation();
+                    if (e.target.tagName === 'INPUT' || e.target.tagName === 'BUTTON') return;
+
+                    // 다른 창 끄기 로직
+                    document.querySelectorAll('.cmt_Space .cmt').forEach(el => {
+                        if (el.parentElement !== this) el.remove();
+                    });
+
+                    const existingInput = this.querySelector(':scope > .cmt');
+                    if (existingInput) {
+                        existingInput.remove();
+                    } else {
+                        const subInput = createInputComment(); // 위에서 만드신 공장 함수 호출
+                        this.append(subInput.cmt);
+
+                        subInput.add_txt.onclick = (event) => {
+                            event.stopPropagation();
+                            const val = subInput.txtarea.value.trim();
+                            if (val) {
+                                // ⭐ 대댓글을 달 때 자기 자신(createRow)을 다시 호출 (재귀)
+                                createRow(row, val);
+                                subInput.cmt.remove();
+                            }
+                        };
+                    }
+                });
+                count++
+                parent.append(row);
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <!-- 전체 컨테이너 -->
+    <div id="wrap_Cmt">
+        <!-- head -->
+        <div id="cmt_Head">
+            <div id="fl_Left" class="left">
+                <span>전체 댓글 ```</span>
+                <label><input type="radio" name="array" value="1">안녕1</label>
+                <label><input type="radio" name="array" value="2">안녕2</label>
+                <label><input type="radio" name="array" value="3">안녕3</label>
+            </div>
+
+            <div id="fl_Right" class="right">
+                <a href="">댓글 등록 (버튼)</a>
+                <a href="">본문 보기 (버튼)</a>
+            </div>
+        </div>
+
+        <!-- 댓글 입력창 -->
+        <div class="inputCmt"></div>
+        <a href="">전체글 (메인 페이지로 가는 버튼)</a>
+        <div id="cmt_Plus_wrap">
+            <!-- 댓글나오는 곳 -->
+            <div class="cmt_Space"></div>
+        </div>
+    </div>
+
+</body>
+
+</html>

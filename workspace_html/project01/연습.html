@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        window.addEventListener('load', init)
+
+        function init() {
+            bind()
+        }
+
+        // function bind() {
+
+        //     let count = 0;
+        //     const mom = document.querySelector('#mom')
+        //     const txtArea = document.querySelector('textarea')
+
+        //     mainCmt()
+        //     subCmt()
+
+        //     function mainCmt() {
+        //         document.querySelector('#mainBtn')
+        //             .addEventListener('click', function () {
+
+        //                 //행
+        //                 const row = document.createElement('div')
+
+        //                 //답글
+        //                 const button = document.createElement('button')
+        //                 button.setAttribute('id', 'num' + count)
+        //                 button.textContent += '대댓글'
+
+        //                 row.append(button)
+
+        //                 row.innerHTML += txtArea.value + count
+
+        //                 mom.append(row)
+
+        //                 count++
+        //             })
+        //     }
+
+        //     function subCmt() {
+        //         document.querySelector( '#num' + count )
+        //             .addEventListener('click', function () {
+        //                 console.log('안녕하세요.')
+        //             })
+        //     }
+
+        // }
+
+        function bind() {
+            let count = 0;
+            const mom = document.querySelector('#mom');
+            const txtArea = document.querySelector('textarea');
+
+            // 메인 댓글 달기
+            document.querySelector('#mainBtn').addEventListener('click', function () {
+                // 1. 행(row) 생성
+                const row = document.createElement('div');
+                row.style.marginBottom = "10px";
+
+                // 2. 대댓글 버튼 생성
+                const subBtn = document.createElement('button');
+                subBtn.textContent = '대댓글';
+
+                // 3. [핵심] 버튼을 만들자마자 바로 이벤트를 걸어줍니다!
+                subBtn.addEventListener('click', function () {
+                    createSubReply(row); // 현재 row(부모)를 인자로 전달
+                });
+
+                // 4. 내용 추가 (innerHTML 대신 textContent나 span 권장)
+                const textNode = document.createTextNode(txtArea.value);
+
+                // 5. 조립
+                row.append(subBtn);
+                row.append(textNode);
+                mom.append(row);
+
+                count++;
+                txtArea.value = ""; // 입력창 비우기
+            });
+
+            // 대댓글 생성을 담당하는 별도의 함수
+            function createSubReply(parentRow) {
+                const subText = prompt("대댓글을 입력하세요:");
+                if (!subText) return;
+
+                const subRow = document.createElement('div');
+                subRow.style.marginLeft = "20px"; // 들여쓰기로 대댓글 표시
+                subRow.style.borderLeft = "1px solid #ccc";
+
+                const subBtn = document.createElement('button');
+                subBtn.textContent = '대댓글';
+
+                // 무한 증식을 위해 대댓글 버튼에도 자기 자신을 부르는 이벤트 추가
+                subBtn.addEventListener('click', function () {
+                    createSubReply(subRow);
+                });
+
+                subRow.append(subBtn);
+                subRow.append(document.createTextNode(` ${subText}`));
+                parentRow.append(subRow);
+            }
+        }
+        
+
+        function bind() {
+
+            const inputCmtarea = document.querySelector('.inputCmt')
+
+            // 메인 댓글 창
+            const mainInput = createInputComment()
+            inputCmtarea.append(mainInput.cmt)
+
+            const subInput = createInputComment()
+
+            let count = 0
+
+            mainInput.add_txt.addEventListener('click', function () {
+                const val = mainInput.txtarea.value.trim()
+                if (!val) return
+
+                // 댓글 1행
+                // 들어갈 요소 <닉네임> <내용> <날짜, 시간, 삭제버튼>
+                const row = document.createElement('div')
+                row.className = 'commentRow' + count
+
+                // <닉네임>
+                const nickname = document.createElement('em')
+                nickname.textContent = "데이터로 받은 닉네임"
+
+                // <내용>
+                const contents = document.createElement('p')
+                contents.textContent = mainInput.txtarea.value
+
+                // <날짜>
+                const timestamp = document.createElement('span')
+
+                const today = new Date()
+                const year = today.getFullYear()
+                let month = today.getMonth() + 1
+                if (month < 10) {
+                    month = '0' + month
+                }
+                let day = today.getDate()
+                day = ('0' + day).slice(-2)
+                // console.log(year + '-' + month + '-' + day) 
+
+                // <시간>
+                const hour = today.getHours()
+                const minute = today.getMinutes()
+                const second = today.getSeconds()
+
+                timestamp.textContent =
+                    `
+                        ${year}.${month}.${day} ${hour}:${minute}:${second}
+                    `
+
+                // <삭제 버튼>
+                const dlt_cmt = document.createElement('button')
+                dlt_cmt.textContent = 'x'
+
+
+                /////////////////////////////////////////////////
+                /////////////삭제 버튼 클릭 시 이벤트///////////////
+                ////////////////////////////////////////////////
+
+                // 내용 수정 및 추가 예정
+                dlt_cmt.addEventListener('click', function () {
+
+                    // 팝업 이벤트 추가 예정
+
+                    const div_chk = document.createElement('div')
+
+                    const chk_pw = document.createElement('input')
+                    chk_pw.value = '비밀번호'
+
+                    const ok = document.createElement('button')
+                    ok.textContent = 'ok'
+
+                    const close = document.createElement('button')
+                    close.textContent = 'x'
+
+                    // 조립 
+                    div_chk.append(chk_pw, ok, close)
+
+                    ok.addEventListener('click', function () {
+                        if (chk_pw.value == null) {
+                            alert('비밀번호를 입력하세요.')
+                        } else if (chk_pw.value == '사용자 비밀번호') {
+                            // 글 삭제
+                            // const 댓글 찾기 = queryselectAll('.commentRow')
+                            // 댓글 찾기.forEach((val, idx)
+                            //      삭제 예정 )
+                        }
+
+                    })
+
+                    close.addEventListener('click', function () {
+                        // 창 닫기 이벤트 추가 예정
+                    })
+                })
+
+                ////////////////////////////////////////////////////
+                ////////////////////다시 함수/////////////////////////
+                ////////////////////////////////////////////////////
+
+                // 조립
+                row.append(nickname, contents, timestamp, dlt_cmt)
+                mainInput.txtarea.value = ""
+
+                // cmt_Space > html에 있는 div
+                document.querySelector('.cmt_Space').append(row)
+
+                // 행(row) 클릭하면 대댓글 입력창
+                row.addEventListener('click', function (evt) {
+
+                    if (evt.target.tagName === 'INPUT'
+                        || evt.target.tagName === 'BUTTON') {
+                        return
+                    }
+
+                    // 댓글 입력창 dom
+                    const replyDom = this.querySelector('.cmt');
+
+                    if (replyDom) {
+                        // 이미 있으면 대댓글 입력창 없애기 (두 번째 클릭에)
+                        replyDom.remove();
+                    } else {
+                        // 없으면 생성
+                        this.append(subInput.cmt);
+
+                        // 대댓글 등록 로직도 여기에 추가 가능
+                        subInput.add_txt.onclick = (event) => {
+                            event.stopPropagation() // 부모 row 클릭 이벤트 방해 금지 / 적용 된건지?
+
+                            reply(row);
+
+                            ///////////////////////////////////////////////////////
+                            // subInput.add_txt.addEventListener('click', function (event) {
+                            //     event.stopPropagation()
+                            //     // reply(subRow)
+                            // })
+                            ////////////////////////////////////////////////////////
+
+                            subInput.cmt.remove(); // 등록 후 창 닫기
+                        };
+                    }
+                });
+
+                // 대댓글 함수
+                function reply(parentRow) { // 위에 전달인자 줬음 row (this)
+
+                    const subRow = document.createElement('div'); // 임시
+                    const btn = document.createElement('button'); // 임시
+                    btn.textContent = '대댓글';
+
+                    subRow.style.marginLeft = "20px"; // 들여쓰기로 대댓글 표시
+                    subRow.style.borderLeft = "1px solid #ccc";
+
+                    // 대대댓글 이후를 위한 재귀
+                    subInput.add_txt.addEventListener('click', function (event) {
+                        reply(subRow) // 함수 실행 때문에 댓글이 또 써지는 현상
+                        event.stopPropagation()
+                    })
+
+                    subRow.textContent = subInput.txtarea.value
+                    parentRow.append(subRow, btn) //임시
+
+                }
+                count++
+            })
+        }
+        
+
+    </script>
+
+</head>
+
+<body>
+
+    <div>댓글창
+        <button id="mainBtn">댓글 달기</button>
+
+    </div>
+    <textarea name="dd" id="comment"></textarea>
+    <div id="mom">내용</div>
+    
+
+<!-- 
+    Todo 
+    1. 댓글 대댓글 테이블화
+    2. 대댓글 prompt X -> append.textarea로 받기
+    3. 대댓글 등록 입력 시 / remove.textarea
+-->
+</body>
+
+</html>

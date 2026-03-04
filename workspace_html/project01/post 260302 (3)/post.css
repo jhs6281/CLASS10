@@ -1,0 +1,512 @@
+:root {
+    --MainColor: rgb(123, 45, 210);
+    --SubColor: rgb(230, 230, 230);
+
+    --color1: rgb(34, 178, 255);
+    --color2: rgb(201, 76, 42);
+    --color3: rgb(145, 222, 90);
+    --color4: rgb(18, 63, 124);
+    --color5: rgb(240, 155, 17);
+    --color6: rgb(99, 12, 167);
+    --color7: rgb(255, 94, 147);
+    --color8: rgb(72, 201, 176);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+
+    height: 500vh;
+}
+
+button {
+    all: unset;
+    /* 모든 기본 스타일 초기화 */
+    cursor: pointer;
+    text-align: center;
+}
+
+input {
+    -webkit-appearance: none;
+    /* 크롬, 사파리 등 브라우저 기본 스타일 제거 */
+    -moz-appearance: none;
+    appearance: none;
+
+    border: none;
+    /* 테두리 제거 */
+    outline: none;
+    /* 포커스 시 테두리 제거 */
+    background-color: transparent;
+    /* 배경 투명 */
+
+    border-radius: 0;
+    /* 둥근 모서리 제거 */
+    box-shadow: none;
+    /* 그림자 제거 */
+    padding: 0;
+    /* 패딩 초기화 */
+    margin: 0;
+    /* 마진 초기화 */
+    font-family: inherit;
+    /* 폰트 상속 */
+}
+
+
+
+
+
+
+/* ---------------------------------------------------------------------- */
+
+.top {
+    /* border: 1px solid red; */
+    border-bottom: 3px solid var(--MainColor);
+    background-color: rgba(255, 255, 255, 0.705);
+
+    padding: 15px 50px;
+
+    display: flex;
+    justify-content: space-between;
+
+    position: sticky;
+    top: 0;
+}
+
+.beforeLogin {
+    /* width: 100%; */
+
+    display: flex;
+    /* display: none; */
+
+    justify-content: flex-end;
+}
+
+.afterLogin {
+    /* width: 100%; */
+
+    display: none;
+    /* display: flex; */
+
+    justify-content: flex-end;
+}
+
+.topBtn {
+    min-width: 60px;
+
+    padding: 2px 10px;
+    margin: 10px 3px;
+
+    background: #fff;
+    color: var(--MainColor);
+    border: 1px solid var(--MainColor);
+    border-radius: 15px;
+
+    font-size: 14px;
+}
+
+.topBtn:hover {
+    background: var(--MainColor);
+    color: #fff;
+    cursor: pointer;
+}
+
+#btn-main {
+    width: 80px;
+}
+
+
+
+
+
+/* ---------------------------------------------------------------------- */
+.main {
+    overflow: hidden;
+
+    padding: 30px 100px 0;
+
+    /* border: 1px solid red; */
+}
+
+.title {
+    padding: 0px 20px 0;
+    margin: 10px 0 5px;
+}
+
+.postInfo:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.postInfo div {
+    height: 20px;
+    font-size: 14px;
+}
+
+.postInfo-left {
+    float: left;
+    display: flex;
+}
+
+#postInfo-left-userName {
+    padding-right: 7px;
+}
+
+#postInfo-left-postingTime {
+    padding-left: 7px;
+}
+
+.postInfo-right {
+    float: right;
+    display: flex;
+}
+
+#postInfo-right-views {
+    padding-right: 7px;
+}
+
+#postInfo-right-likes {
+    padding-left: 7px;
+    padding-right: 7px;
+}
+
+#postInfo-right-comments {
+    padding-left: 7px;
+    padding-right: 7px;
+}
+
+#postInfo-right-copy {
+    padding-left: 7px;
+}
+
+.postInfo-right button {
+    border: 1px solid #ccc;
+    padding: 0 12px;
+    background-color: #e6e6e6;
+    border-radius: 10px;
+}
+
+
+.line {
+    margin: 20px auto;
+}
+
+
+.post-content {
+    padding: 20px;
+}
+
+.wrap {
+    display: flex;
+    justify-content: center;
+}
+
+#recommend-wrap {
+    display: flex;
+    justify-content:space-evenly;
+    align-items: center;
+    padding: 40px 0;
+
+    width: 24%;
+}
+
+.recommend {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    cursor: pointer;
+
+    width: 90px;
+    height: 90px;
+
+    background-color: var(--MainColor);
+    border-radius: 15%;
+    color: white;
+}
+
+
+
+
+/* ---------------------------------------------------------------------- */
+/* 전체 컨테이너 */
+#wrap_Cmt {
+    padding: 0 100px;
+    margin: 0 auto;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+/* 댓글 목록 영역 */
+.cmt_Space {
+    border-top: 1px solid #333;
+    margin-top: 20px;
+}
+
+/* 댓글 한 행 (부모/자식 공통) */
+.commentRow {
+    display: flex;
+    flex-direction: column;
+    /* 내용과 답글창이 세로로 배치되도록 */
+    padding: 12px 10px;
+    border-bottom: 1px solid #eee;
+    background: #fff;
+    width: 100%;
+}
+
+/* 대댓글일 경우의 스타일 (깊이 표현) */
+.commentRow .commentRow {
+    margin-top: 10px;
+    padding-left: 25px;
+    /* 들여쓰기 */
+    border-left: 2px solid var(--SubColor);
+    /* 세로 가이드선 */
+    border-bottom: none;
+    /* 내부에선 하단선 제거 */
+    background: #fafafa;
+    /* 대댓글은 살짝 어두운 배경 */
+}
+
+/* 댓글 정보 가로 정렬 레이아웃 */
+.commentRow>span:first-child,
+/* 닉네임/번호 영역 */
+.commentRow>div:nth-child(2),
+/* 내용 영역 */
+.commentRow>.span_right {
+    /* 날짜/삭제 버튼 */
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+/* 닉네임 및 번호 */
+.commentRow span span {
+    font-size: 13px;
+    font-weight: bold;
+    color: #555;
+}
+
+/* 댓글 내용 */
+.commentRow p {
+    flex: 1;
+    font-size: 14px;
+    color: #333;
+    margin: 5px 0;
+    line-height: 1.5;
+    word-break: break-all;
+}
+
+.edit {
+    cursor: pointer;
+}
+
+/* 오른쪽 영역 (날짜와 삭제버튼) */
+.span_right {
+    justify-content: flex-end;
+    gap: 10px;
+    font-size: 11px;
+    color: #999;
+}
+
+/* 삭제 버튼 스타일 */
+.span_right button {
+    background: #ddd;
+    color: #666;
+    width: 18px;
+    height: 18px;
+    border-radius: 3px;
+    font-size: 10px;
+    line-height: 18px;
+}
+
+/* 답글 입력창 컨테이너 정렬 */
+.cmt {
+    width: 100%;
+    background: #f1f1f1;
+    padding: 10px;
+    margin-top: 8px;
+    border-radius: 4px;
+}
+
+.input_wrap {
+    display: flex;
+    gap: 8px;
+}
+
+.cmt_input {
+    flex: 1;
+    background: #fff !important;
+    border: 1px solid #ccc !important;
+    padding: 10px !important;
+    height: 45px !important;
+    border-radius: 4px;
+}
+
+.add_txt {
+    width: 70px;
+    height: 45px;
+    background: var(--MainColor) !important;
+    color: #fff !important;
+    border-radius: 4px;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+/* gemini css */
+
+/* 댓글 전체 컨테이너 */
+.cmt_Space {
+    border-top: 1px solid #ddd;
+    margin-top: 20px;
+    font-size: 13px;
+    font-family: sans-serif;
+}
+
+/* 댓글 한 행 (부모/자식 공통) */
+.commentRow {
+    border-bottom: 1px solid #eee;
+    padding: 10px 5px;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    /* 내용과 답글창이 세로로 쌓이도록 */
+}
+
+/* 댓글 상단 정보 (닉네임, 내용, 날짜 등) */
+.cmt_info {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.cmt_left {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* 이미지의 'L'자형 화살표 표시 */
+.reply_icon {
+    color: #3b4890;
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+.nickname {
+    font-weight: bold;
+    color: var(--MainColor);
+    white-space: nowrap;
+}
+
+.content {
+    color: #555;
+    margin: 0 10px;
+    word-break: break-all;
+}
+
+.cmt_right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #999;
+    font-size: 11px;
+}
+
+.dlt_btn {
+    cursor: pointer;
+    background: #999;
+    color: var(--MainColor);
+    border: none;
+    width: 16px;
+    height: 16px;
+    line-height: 14px;
+    text-align: center;
+    font-size: 10px;
+}
+
+/* 대댓글 들여쓰기 */
+.depth_margin {
+    margin-left: 25px;
+}
+
+@media screen and (max-width: 600px) {
+
+    .top {
+        width: 100%;
+        padding: 10px 20px;
+    }
+
+    .topBtn {
+        width: 75px;
+        height: 25px;
+        font-size: 11px;
+        margin: 5px 2px;
+        padding: 0;
+    }
+
+    #wrap_Cmt {
+        width: 100%;
+        padding: 0 20px;
+    }
+
+    /* 세정님 css */
+    body {
+        margin: 5px;
+    }
+
+
+    .left>div {
+        padding-left: 15px;
+    }
+
+    .cmt {
+        margin: 0 auto;
+    }
+
+    .add_txt {
+        width: 45px;
+
+        font-size: 12px;
+    }
+
+    .cmt_input {
+        width: 85%;
+        height: 100px;
+    }
+
+    .top {
+        padding: 15px 8px;
+    }
+
+    .main {
+        padding: 15px 10px 0;
+    }
+
+    .topBtn {
+        font-size: 12px;
+        width: 50px;
+    }
+
+    #title {
+        font-size: 16px;
+
+        margin: 5px 0;
+    }
+
+    div[id^="postInfo"] {
+        font-size: 12px;
+    }
+
+    .line {
+        margin: 15px 0;
+    }
+
+    .post-content {
+        padding: 10px;
+
+        font-size: 12px;
+    }
+}

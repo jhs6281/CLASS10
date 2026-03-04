@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* 기본값 설정 */
+
+:root {
+    --white: rgb(230, 230, 230);
+
+    --MainColor: rgb(46, 64, 112);
+}
+
+/* 자주 사용할 색상 */
+
+.contain {
+    border: 1px solid red;
+    width: 100%;
+    height: 100vh;
+
+    vertical-align: top;
+    font-size: 0;
+}
+
+.block {
+    border: 1px solid blue;
+    height: 100vh;
+    display: inline-block;
+    box-sizing: border-box;
+}
+
+.contain .leftMenu {
+    position: fixed;
+    width: 40%;
+    background-color: var(--MainColor);
+    text-align: center;
+    font-size: 16px;
+}
+
+.contain .main {
+    margin-left: 40%;
+    padding: 50px 50px;
+    width: 60%;
+    font-size: 30px;
+
+    font-size: 16px;
+    font-weight: 400;
+}
+
+
+.contain .leftMenu .photo {
+    display: inline-block;
+
+    /* z-index: 1; */
+    border: 1px solid var(--white);
+    width: 300px;
+    height: 300px;
+
+    margin-top: 10%;
+    border-radius: 50%;
+
+    background-image: url("https://media.discordapp.net/attachments/902371372943159326/1461742562996916532/371346e1d1e81835.jfif?ex=699fbc98&is=699e6b18&hm=223a13fa4855df1fa48b07b0b08471ce2a01b792976327141de3eec4a2040e52&=&format=webp");
+    background-size: cover;
+
+    transition: box-shadow 0.5s;
+}
+
+.contain .leftMenu .photo:hover {
+    box-shadow: 0px 0px 6px 3px rgb(255, 255, 255);
+}
+
+.contain .leftMenu .profile_contents {
+    border: 1px solid var(--white);
+    width: 80%;
+    height: 40%;
+    display: inline-block;
+
+    margin-top: 5%;
+    padding: 24px 32px;
+    box-sizing: border-box;
+
+    transition: box-shadow 0.5s;
+}
+.contain .leftMenu .profile_contents:hover{
+    box-shadow: 0px 0px 6px 3px rgb(255, 255, 255);
+}
+
+.contain .leftMenu .profile_contents>strong {
+    color: var(--white);
+    font-weight: 400;
+    font-size: 1.5em;
+}
+
+.contain .leftMenu .profile_contents>p {
+    color: var(--white);
+}
+
+.contain .main .Box {
+    border: 1px solid red;
+    width: 500px;
+    height: 500px;
+}
+
+@media screen and (max-width: 600px) {
+    .contain .leftMenu {
+        position: relative;
+        width: 100%;
+        height: auto;
+        padding-bottom: 5%;
+    }
+
+    .contain .main {
+        margin: 0;
+        width: 100%;
+    }
+}
+
+@media screen and (min-width: 1440px) {
+    .contain .leftMenu {
+        position: relative;
+        width: 100%;
+        height: auto;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-bottom: 5%;
+    }
+
+    .contain .main {
+        margin-left: 0;
+        width: 100%;
+    }
+
+    .contain .leftMenu .photo,
+    .profile_contents {
+        display: block;
+    }
+
+    .photo {
+        margin-top: 0;
+        min-width: 299px;
+        min-height: 299px;
+    }
+
+    .profile_contents {
+        width: 90%;
+        height: auto;
+    }
+
+
+}
+    </style>
+</head>
+<body>
+    <div class="contain">
+        <!-- 프로필 사이드 -->
+        <div class="block leftMenu">
+            <div class="photo"></div>
+            <div class="profile_contents">
+                <strong>홍길동</strong>
+                <p>
+                    <a href="">#자기소개 </a>
+                    <a href="">#장점 </a>
+                    <a href="">#성격 </a>
+                    <a href="">#경험 </a>
+                    <a href="">#취미 </a>
+                </p>
+                <br>
+                <p>
+                    <a href="">#포트폴리오1 : 개인 홈페이지</a><br>
+                    <a href="">#포트폴리오2 : 개인 홈페이지</a><br>
+                    <a href="">#포트폴리오3 : 개인 홈페이지</a><br>
+                </p>
+            </div>
+        </div>
+
+        <!-- 메인 컨텐츠 -->
+        <div class="block main">
+            목차 / 이력서 / 자기소개 / 등등
+
+        </div>
+        <div class="block main">
+            <h1> 포트폴리오 1 : 이름이름 </h1><br>
+            <a href="">
+                링크 :
+            </a><br>
+            <span>
+                미리보기 :
+            </span>
+            <div class="iframe1 Box">
+                I 프레임 홈페이지
+            </div>
+        </div>
+
+
+    </div>
+</body>
+
+</html>
