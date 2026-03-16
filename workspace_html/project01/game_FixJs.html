@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        :root {
+            --MainColor: rgb(123, 45, 210);
+            --SubColor: rgb(230, 230, 230);
+
+            --color1: rgb(34, 178, 255);
+            --color2: rgb(201, 76, 42);
+            --color3: rgb(145, 222, 90);
+            --color4: rgb(18, 63, 124);
+            --color5: rgb(240, 155, 17);
+            --color6: rgb(99, 12, 167);
+            --color7: rgb(255, 94, 147);
+            --color8: rgb(72, 201, 176);
+        }
+
+        body {
+            background: rgb(70, 18, 70);
+            color: white;
+            font-family: sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0;
+            padding: 20px;
+        }
+
+        #game-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .mission-list {
+            background: #16213e;
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 5px solid var(--color3);
+            width: 600px;
+            margin-bottom: 20px;
+        }
+
+        .completed {
+            text-decoration: line-through;
+            color: #555;
+        }
+
+        #game-world {
+            position: relative;
+            width: 600px;
+            height: 400px;
+            background: #0f3460;
+            border: 2px solid white;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+
+        /* 모달 디자인 */
+        #modal-wrap {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(5px);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        /* 모달 박스 */
+        #modal {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            width: 320px;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            border: 2px solid var(--MainColor);
+            transform: translateY(0);
+        }
+
+        /* 내부 텍스트 */
+        #modal span {
+            display: block;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 25px;
+            line-height: 1.5;
+        }
+
+        /* 확인 버튼 */
+        #modal button {
+            background-color: var(--MainColor);
+            color: white;
+            border: none;
+            padding: 12px 40px;
+            border-radius: 30px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            width: 100%;
+        }
+
+        #modal button:hover {
+            background-color: #6221a8;
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(123, 45, 210, 0.3);
+        }
+
+        /* 미션 대상들 */
+        #drag-item {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background: var(--color2);
+            cursor: move;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            top: 170px;
+            left: 50px;
+            user-select: none;
+        }
+
+        #drop-zone {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            border: 3px dashed var(--color1);
+            top: 155px;
+            right: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+        }
+
+        #click-me {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 10px 20px;
+            background: var(--color6);
+            border: none;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .control-panel {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            width: 560px;
+            color: #333;
+            display: flex;
+            gap: 10px;
+        }
+
+        input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+
+        button#fix-btn {
+            padding: 10px 20px;
+            background: var(--MainColor);
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+
+    <script>
+        window.addEventListener("load", () => {
+            init();
+        })
+
+        function init() {
+            bind();
+        }
+
+        function bind() {
+            const state = { dragFixed: false, mathFixed: false, clickFixed: false };
+            const dragItem = document.getElementById('drag-item');
+            const clickBtn = document.getElementById('click-me');
+            const codeInput = document.getElementById('code-input');
+
+            // --- [버그 1: 반전 드래그 로직] ---
+            let isDragging = false;
+            dragItem.onmousedown = () => isDragging = true;
+            window.onmouseup = () => {
+                isDragging = false;
+                checkDragClear();
+            };
+            window.onmousemove = (e) => {
+                if (!isDragging) return;
+                // 버그 상태일 때 이동 방향 반전
+                let moveX = state.dragFixed ? e.movementX : -e.movementX;
+                let moveY = state.dragFixed ? e.movementY : -e.movementY;
+
+                dragItem.style.left = (dragItem.offsetLeft + moveX) + "px";
+                dragItem.style.top = (dragItem.offsetTop + moveY) + "px";
+            };
+
+            // --- [버그 2: 청개구리 입력] ---
+            // '7+2'의 답인 '9'를 입력창에 쳐야 함. 하지만 버그 상태면 숫자가 반전됨.
+            codeInput.addEventListener('input', (e) => {
+                if (state.mathFixed) return;
+                const val = codeInput.value;
+                const lastChar = val[val.length - 1];
+                if (/[0-9]/.test(lastChar)) {
+                    // 숫자를 입력하면 9에서 뺀 값이 나옴 (예: 9치면 0나옴)
+                    alert("입력값이 뒤틀렸습니다! 수리 코드를 먼저 입력하세요.");
+                    codeInput.value = val.slice(0, -1);
+                }
+            });
+
+            // --- [버그 3: 도망가는 버튼] ---
+            clickBtn.onmouseover = () => {
+                if (state.clickFixed) return;
+                // 마우스만 올려도 도망감
+                clickBtn.style.left = Math.random() * 80 + "%";
+                clickBtn.style.top = Math.random() * 80 + "%";
+            };
+            clickBtn.onclick = () => {
+                document.getElementById('list-click').classList.add('completed');
+                alert("미션 3 클리어!");
+            };
+
+            // --- [수리 시스템] ---
+            document.getElementById('fix-btn').onclick = () => {
+                const answer = codeInput.value;
+                if (answer === "normal_drag") {
+                    state.dragFixed = true;
+                    document.getElementById('list-drag').style.color = "#4ecca3";
+                    alert("버그 1 수리 완료: 이제 드래그 방향이 정상입니다.");
+                } else if (answer === "9") {
+                    state.mathFixed = true;
+                    document.getElementById('list-math').classList.add('completed');
+                    alert("미션 2 클리어: 연산 버그를 해결했습니다.");
+                } else if (answer === "stay_button") {
+                    state.clickFixed = true;
+                    document.getElementById('list-click').style.color = "#4ecca3";
+                    alert("버그 3 수리 완료: 버튼이 더 이상 도망가지 않습니다.");
+                }
+                codeInput.value = "";
+            };
+
+            function checkDragClear() {
+                const itemRect = dragItem.getBoundingClientRect();
+                const zoneRect = document.getElementById('drop-zone').getBoundingClientRect();
+                if (itemRect.left > zoneRect.left && itemRect.right < zoneRect.right &&
+                    itemRect.top > zoneRect.top && itemRect.bottom < zoneRect.bottom) {
+                    document.getElementById('list-drag').classList.add('completed');
+                    alert("미션 1 클리어!");
+                }
+            }
+
+
+        }
+    </script>
+
+
+</head>
+
+<body>
+    <div id="modal-wrap">
+        <div id="modal">
+            <span>안녕하세요</span>
+            <button>확인</button>
+        </div>
+    </div>
+
+    <div id="game-header">
+        <h1>뒤틀린 자바스크립트 이벤트 찾기</h1>
+    </div>
+
+    <div class="mission-list">
+        <h3>뒤틀린 자바스크립트 이벤트 목록</h3>
+        <ul>
+            <li id="list-drag">버그 1: 반전 드래그 (네모를 점선 안으로 옮기기)</li>
+            <li id="list-math">버그 2: 청개구리 입력 (계산: 7 + 2 = <span id="math-target">?</span>)</li>
+            <li id="list-click">버그 3: 도망가는 버튼 (버튼 1번 클릭하기)</li>
+        </ul>
+    </div>
+
+    <div id="game-world">
+        <div id="drop-zone">TARGET</div>
+        <div id="drag-item">DRAG</div>
+        <button id="click-me">클릭해봐!</button>
+    </div>
+
+    <div class="control-panel">
+        <input type="text" id="code-input" placeholder="수리 코드 입력 (힌트: reverse, normal, stay)">
+        <button id="fix-btn">시스템 수리</button>
+    </div>
+</body>
+
+</html>

@@ -13,10 +13,27 @@
 </head>
 
 <body>
+    <!-- 모달창 -->
+    <div id="Delete-Popup">
+        <div class="modal-content">
+            <div class="modal-text"><span>정말 삭제하시겠습니까?</span></div>
+            <div class="modal-btns">
+                <button type="button" class="btn-confirm">삭제</button>
+                <button type="button" class="btn-cancel">취소</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 헤더 -->
     <div class="top">
         <div class="left">
             <button type="button" class="topBtn" id="btn-comm">목록</button>
-            <button type="button" class="topBtn" id="btn-main">메인 페이지</button>
+            <!-- <button type="button" class="topBtn" id="btn-main">메인 페이지</button> -->
+        </div>
+
+        <div class="logo">
+            <img src="https://cdn.discordapp.com/attachments/902371372943159326/1461742562996916532/371346e1d1e81835.jfif?ex=69a99fd8&is=69a84e58&hm=cf22f5d956ce3221fd35ed409e75abfa368f2aa980de116246b399678fd88583&"
+                alt="logo">
         </div>
 
         <div class="right">
@@ -46,7 +63,7 @@
                     <div id="postInfo-right-views">조회 <span>0</span></div>
                     <div id="postInfo-right-likes">추천 <span>0</span></div>
                     <div id="postInfo-right-comment">
-                        <button type="button" id="btn-comment">댓글 <span>0</span></button>
+                        <a href="#comment-line"><button type="button" id="btn-comment">댓글 <span>0</span></button></a>
                     </div>
                     <div id="postInfo-right-copy">
                         <button type="button" id="btn-URL">URL 복사</button>
@@ -67,9 +84,16 @@
                     <div id="unlike" class="recommend">비추천 ! <span>0</span></div>
                 </div>
             </div>
+            <div id="edit-btn-wrap">
+                <div id="edit-btns">
+                    <div id="post-btn-edit" class="post-btn">수정</div>
+                    <div id="post-btn-dlt" class="post-btn">삭제</div>
+                    <div class="go-title"> <a href="#title">제목으로</a></div>
+                </div>
+            </div>
         </div>
 
-        <hr class="line post-comment-line">
+        <hr id="comment-line" class="line post-comment-line">
         <div class="remote"></div>
 
     </div>
@@ -79,7 +103,7 @@
         <!-- head -->
         <div id="cmt_Head">
             <div id="fl_Left" class="left">
-                <div>댓글 <span id="cmt_commentCount">0</span></div>
+                <div id="cmt_commentCount">댓글 <span>0</span></div>
                 <!-- <label><input type="radio" name="array" value="1">안녕1</label>
                 <label><input type="radio" name="array" value="2">안녕2</label>
                 <label><input type="radio" name="array" value="3">안녕3</label> -->
@@ -98,6 +122,7 @@
             <!-- 댓글나오는 곳 -->
             <div class="cmt_Space"></div>
         </div>
+        <div id="read_more" style="display: none;">+더보기</div>
     </div>
 
 </body>

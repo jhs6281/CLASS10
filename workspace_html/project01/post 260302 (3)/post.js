@@ -22,7 +22,8 @@ function bind() {
     }
 
     const btn_comm = document.querySelector("#btn-comm");
-    const btn_main = document.querySelector("#btn-main");
+    // const btn_main = document.querySelector("#btn-main");
+    const logo = document.querySelector(".logo");
     const btn_login = document.querySelector("#btn-login");
     const btn_join = document.querySelector("#btn-join");
     const btn_logout = document.querySelector("#btn-logout");
@@ -34,7 +35,11 @@ function bind() {
     })
 
     // 메인페이지 버튼 누르면 창 이동
-    btn_main.addEventListener("click", () => {
+    // btn_main.addEventListener("click", () => {
+    //     window.location.href = "./main.html";
+    // })
+    // 로고로 변경됨
+    logo.addEventListener("click", () => {
         window.location.href = "./main.html";
     })
 
@@ -80,8 +85,6 @@ function bind() {
     }
 
     // 추천 / 비추천
-    
-    
     const like = document.querySelector("#like");
     const unlike = document.querySelector("#unlike");
     let likeCount = 1;
@@ -98,7 +101,7 @@ function bind() {
         // 카운트
         document.querySelector("#like>span").textContent = likeCount;
         // 상단 추천수 같이쓰기ㅎ
-        document.querySelector("#postInfo-right-likes>span").textContent = likeCount; 
+        document.querySelector("#postInfo-right-likes>span").textContent = likeCount;
         likeCount++;
     }
     unlike.onclick = () => {
@@ -111,6 +114,16 @@ function bind() {
         document.querySelector("#unlike>span").textContent = unlikeCount;
         unlikeCount++;
     }
+
+    document.querySelector('#post-btn-dlt')
+        .addEventListener('click', function () {
+            modal(/*post*/)
+        })
+
+    document.querySelector('#post-btn-edit')
+        .addEventListener('click', function () {
+            window.open('post_Writer.html') 
+        })
 
     ///////////////////////////////////////////////////////////
     // 댓글
@@ -138,8 +151,7 @@ function bind() {
         const val = mainInput.txtarea.value.trim()
         createRow(document.querySelector('.cmt_Space'), val)
         mainInput.txtarea.value = ""
-
-        // 댓글 수 세기
+        cntComment()
     })
 
     function getFormattedDate() {
@@ -206,10 +218,8 @@ function bind() {
 
         // [삭제 버튼 이벤트]
         dlt_cmt.addEventListener('click', function (e) {
-            e.stopPropagation() // 삭제 버튼 클릭 시 답글창이 열리지 않게
-            if (confirm("정말 삭제하시겠습니까?")) {
-                row.remove()
-            }
+            e.stopPropagation()
+            modal(row)
         })
         // [수정 버튼 이벤트]
         edit.onclick = (e) => {
@@ -243,6 +253,7 @@ function bind() {
             const existingInput = this.querySelector(':scope > .cmt')
             if (existingInput) {
                 existingInput.remove()
+                cntComment()
             } else {
                 const subInput = createInputComment() // 위에서 만드신 공장 함수 호출
                 this.append(subInput.cmt)
@@ -253,6 +264,7 @@ function bind() {
                     if (val) {
                         createRow(row, val)
                         subInput.cmt.remove()
+                        cntComment()
                     }
                 }
             }
@@ -260,10 +272,6 @@ function bind() {
         count++
         parent.append(row)
     }
-
-
-
-
 
 } // bind
 
@@ -287,7 +295,7 @@ function renderPost(postRes) {
     document.querySelector("#postInfo-right-views").innerText = postRes.item.viewCount;
 }
 
-function createInputComment() {
+function createInputComment() { // 댓글 입력창 생성기
     const cmt = document.createElement('div')
     cmt.className = 'cmt'
 
@@ -306,4 +314,55 @@ function createInputComment() {
     input_wrap.append(txtarea, add_txt)
     cmt.append(input_wrap)
     return { cmt, txtarea, add_txt }
+}
+
+let currentVisibleStep = 10; // 처음에 보여줄 댓글 개수
+
+function cntComment() { // 댓글 카운팅
+    const allComments = document.querySelectorAll('.commentRow');
+    const currentCount = allComments.length;
+
+    const targets = document.querySelectorAll('#btn-comment > span, #cmt_commentCount > span');
+    targets.forEach(el, idx => el.textContent = currentCount)
+    
+    // 댓글이 10개 이상일 때,
+    if ((idx + 1) > 10) {
+
+        // 더보기 버튼 생성 (?)
+        const cmt_Plus_wrap = document.querySelector('#cmt_Plus_wrap')
+
+        const cmt_pagination = document.createElement('div')
+        cmt_pagination.className = "cmt_pagination"
+        cmt_pagination.textContent = "+더보기"
+
+        cmt_Plus_wrap.after(cmt_pagination)
+        
+        // 스크롤 내리면 > 
+            for(let i=0; i<currentCount; i++){
+
+            }
+        // { 댓글 11~20개 } 보여주기.
+
+        // 어펜드 더보기 div (스크롤로 할거면 안하고.)
+
+    }
+
+
+}
+
+function modal(evtTarget) { // 모달
+    const popup = document.querySelector('#Delete-Popup')
+    popup.style.display = 'flex'
+
+    // 삭제 버튼 클릭
+    popup.querySelector('.btn-confirm').onclick = (evt) => {
+        evtTarget.remove()
+        cntComment()
+        popup.style.display = 'none'
+    }
+
+    // 취소 버튼 클릭
+    popup.querySelector('.btn-cancel').onclick = () => {
+        popup.style.display = 'none'
+    }
 }

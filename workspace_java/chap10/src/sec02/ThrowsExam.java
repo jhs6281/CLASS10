@@ -42,7 +42,7 @@ public class ThrowsExam {
 		}
 	}
 
-	static void 
+	static void  // 두 개 이상 사용 가능
 	test() throws ClassNotFoundException, IOException { // Input / Output = IO
 		Class.forName("sec02.ThrowsExam");
 	}
