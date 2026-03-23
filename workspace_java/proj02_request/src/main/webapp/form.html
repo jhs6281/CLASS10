@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+</head>
+<body>
+
+	<h1>parameter 연습</h1>
+
+	<!-- 	<form method="get" action="req"> 상대주소1 -->
+	<!-- 	<form method="get" action="./req"> 상대주소2 -->
+	<!-- 	<form method="get" action="http://127.0.0.1:8080/proj02_request/req"> 절대주소 1 -->
+	<form method="get" action="/proj02_request/req">
+		<!-- 절대주소 2 -->
+		id : <input type="text" name="id" value="아이디를 입력해주세요."></br>
+		<!-- name : 네이버의 q -->
+		pw : <input type="password" name="pw" value="0000"> </br> <input
+			type="checkbox" name="item" value="1"> 욕망의 항아리 <br> <input
+			type="checkbox" name="item" value="2"> 노가다 목장갑 <br> <input
+			type="checkbox" name="item" value="3"> 집행자의 검 <br> <input
+			type="text" name="none" value="1234" style="display: none;"><br>
+		<input type="hidden" name="hidden" value="hihi"><br> <input
+			type="button" name="btn1" value="btn1"><br>
+		<button type="button" name="btn2" value="btn2">btn2</button>
+
+		<select name="select">
+			<option value="1">무한의 대검</option>
+			<option value="2">몰락한 왕의 검</option>
+			<option value="3">처형인의 대검</option>
+			<option value="4">스태틱 단검</option>
+		</select> <br> <input type="radio" name="radio1" value="r1" checked>
+		최민수 <br> <input type="radio" name="radio1" value="r2">
+		라인하르트 <br> <input type="radio" name="radio1" value="r3">
+		트레이서 <br> <input type="radio" name="radio1" value="r4">
+		루시우 <br> <input type="radio" name="radio1" value="r5"> 겐지
+		<br>
+
+		<textarea name="txtarea" value="txtarea1"></textarea>
+		<br> <input type="date" name="date1" value="date1"> <br>
+
+		<input type="submit" value="get 전송"> <br>
+	</form>
+
+	<form method="post" action="forward">
+		<!-- id2 -->
+		id : <input type="text" name="text" value="아이디를 입력해주세요."></br> pw :
+		<input type="password" name="pw2" value="0000"> </br>
+
+		<!-- 전송 버튼 -->
+		<input type="submit" value="post 전송"> <br>
+	</form>
+
+</body>
+</html>

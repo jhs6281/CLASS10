@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+</head>
+
+<body>
+<div>hello world</div>
+</body>
+
+<script>
+const url = "/proj02_request/req"
+    option = {
+    method: 'GET'
+    }
+    fetch(url,option) // 주소와 메소드 지정 > 보낸다?
+    .then(function(response){ // > http응답 200, 404 (헤더) > response에 저장
+    return response.json() // > body 읽음.json() - json화 >
+    }).then(function(json){ // > 위에서 관리한 데이터 사용 시작
+    const div = document.querySelector('div'); 
+    div.innerHTML = json.key 
+    console.log(json.key)
+    }).catch(function(error){
+    console.log(error)
+    })
+</script>
+</html>

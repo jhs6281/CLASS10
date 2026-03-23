@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script>
+	window.addEventListener('load', bind);
+
+	function bind() {
+		console.log("hello world");
+		const btn1 = document.querySelector('#btn1')
+		// ajax 객체 생성 (기본 방법)
+		// Request 요청
+		const xhr = new XMLHttpRequest();
+
+		// 보낼 준비
+		// 방식 method, 주소
+		xhr.open('get', 'http://192.168.0.25:8080/proj02_request/req');
+
+		// 보내기
+		xhr.send();
+
+		//new open send -> 3중 세트
+
+		// 언제 올 지 모르니 onload event로 실행. 동기화
+		xhr.onload = function() {
+			// 응답 상자
+			console.log(xhr.responseText); // 값을 담아온 것
+			const par = JSON.parse(xhr.responseText);
+
+			document.querySelector("div").textContent = Object.keys(par)
+			document.querySelector("div").textContent += ":"
+			document.querySelector("div").textContent += par['key']
+		}
+	}
+</script>
+</head>
+<body>
+	<div>hello wrold</div>
+</body>
+</html>

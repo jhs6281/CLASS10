@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+window.addEventListener('load', bind);
+
+function bind() {
+	
+console.log("hello world");
+
+const url = 'http://192.168.0.25:8080/proj02_request/req'
+    const option = {
+        method: 'get'
+    }
+
+fetch(url, option)
+.then(function (response) {
+    return response.json()
+}).then(function (json) {
+    
+    json.forEach((value, idx) => {
+    	console.log("obkey: " + Object.keys(value))
+        document.querySelector("div").innerHTML += 
+        ` 
+            <div>
+            <span>${Object.keys(value)}</span>
+            :
+            <span>${value.key}</span>
+            </div>
+        `
+    });
+    
+}).catch(function (error) {
+    console.error(error)
+})
+
+}
+</script>
+</head>
+<body>
+
+	<form method="post" action="exam">
+		<input type="text" name="id"> <input type="submit"
+			value="post 송신">
+	</form>
+
+	<div></div>
+</body>
+
+</html>

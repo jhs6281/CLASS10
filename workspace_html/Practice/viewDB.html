@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>viewDB</title>
+
+    <script>
+
+        window.addEventListener('load', init)
+
+        function init() {
+            bind()
+        }
+
+        function bind() {
+            
+        const url = '/192.168.0.25/proj00_exam/signIn'
+        const option = {
+            method: 'get'
+        }
+        fetch(url, option).then(function (response) {
+            return response.json()
+        }).then(function (json) {
+            console.log(json)
+        }).catch(function (error) { // 에러 발생시 catch
+            console.error(error)
+        })
+
+        }
+
+    </script>
+</head>
+
+<body>
+
+    <table border="1px">
+
+        <thead>
+            <th>num</th>
+            <th>empno</th>
+            <th>id</th>
+            <th>pw</th>
+            <th>email</th>
+            <th>hireDate</th>
+            <th>working</th>
+        </thead>
+
+        <tbody>
+
+        </tbody>
+    </table>
+
+</body>
+
+</html>
