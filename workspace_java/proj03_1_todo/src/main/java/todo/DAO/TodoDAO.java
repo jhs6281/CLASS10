@@ -135,28 +135,25 @@ public class TodoDAO {
 			String query = "select * from todo where todo_id=?";
 			ps = conn.prepareStatement(query);// 오라클용으로 컴파일
 			ps.setInt(1, todo_id); // 파라미터 전달인자 == todo_id 셀렉트 / get실행
-			
-			
 
 			// 3. 실행 및 결과 확보
 			rs = ps.executeQuery(); // 데이터 가져옴
-			
+
 			// 4. 결과 활용
-			if ( rs.next() ) {
-				
+			if (rs.next()) {
+
 				// 컬럼 전부 출력
 				todoDTO.setTodo_id(rs.getInt("todo_id"));
 				todoDTO.setDuedate(rs.getDate("duedate"));
 				todoDTO.setDone(rs.getInt("done"));
 				todoDTO.setContent(rs.getString("content"));
 				todoDTO.setCtime(rs.getDate("ctime"));
-				
+
 			}
-			
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
-			
+
 		} finally {
 
 			if (rs != null) {
@@ -182,11 +179,72 @@ public class TodoDAO {
 			}
 
 		}
-		///////////////
 
 		// 4. 결과 활용
-
 		return todoDTO;
-
 	}
+
+	////////////////
+	public int insertTodo(TodoDTO todoDTO) {
+
+		String content = (String) todoDTO.getTodo_content();
+		int result = -1;
+		
+		try { // 1. DB 접속
+			Context ctx = new InitialContext();
+			DataSource dataFactory = (DataSource) ctx.lookup("java:/comp/env/jdbc/oracle");
+
+			String query = 
+					  " INSERT INTO todo" 
+					+ " VALUES (seq_todo.nextval, NULL, 0, ?, sysdate)";
+			
+			// 2. SQL 준비
+			try (Connection conn = dataFactory.getConnection();
+				PreparedStatement ps = conn.prepareStatement(query);) {
+				
+				ps.setString(1, content); 
+				
+				result = ps.executeUpdate(); // Add
+				System.out.println("/todoDAO insertDB 완료: " + result);
+					
+				}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+	
+	////////////////
+	public int updateTodo(TodoDTO todoDTO) {
+
+		String content = (String) todoDTO.getTodo_content();
+		int id = (int) todoDTO.getTodo_id();
+		
+		int result = -1;
+		
+		///////////////////////////////////////////////////////
+		
+		try { // 1. DB 접속
+			Context ctx = new InitialContext();
+			DataSource dataFactory = (DataSource) ctx.lookup("java:/comp/env/jdbc/oracle");
+
+			String query = "UPDATE todo SET Content = ? WHERE todo_id = ?";
+			
+			// 2. SQL 준비
+			try (Connection conn = dataFactory.getConnection();
+				PreparedStatement ps = conn.prepareStatement(query);) {
+				
+				ps.setString(1, content); 
+				ps.setInt(2, id); 
+				
+				result = ps.executeUpdate(); // Add
+				System.out.println("/todoDAO updateDB 완료: " + result);
+					
+				}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+	///////////////
 }

@@ -19,14 +19,13 @@ public class ConstantExam {
 		
 		static int statusCheck(String request) {
 			if("상품문의".equals(request)) {
-				return Constant.E03;
+//				return Constant.E03;
 				else {
-					return Constant.OK;
+//					return Constant.OK;
 					
 				}
-			}
-			
-					
+			}			
+			return 1;
 		}
 	}
 

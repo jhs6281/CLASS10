@@ -16,8 +16,8 @@ import todo.service.TodoService;
 public class TodoModifyController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		System.out.println("/todo/modify [doGet] 실행");
 		
+		System.out.println("/todo/modify [doGet] 실행");
 
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html; charset=utf-8;");
@@ -37,28 +37,19 @@ public class TodoModifyController extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		
 		// get 방식으로 보냄 / action의 주소에 파라미터로 전달
-		out.write("<form method='get' action=''>");
+		out.write("<form method='post' action='../todo/update'>");
 		
-		out.write("<br> todo_id : <input type='text' value='" 
-						+ todoDTO.getTodo_id() + "'>");
-		
-		out.write("<br> duedate : <input type='text' value='" 
-				+ todoDTO.getTodo_duedate() + "'>");
-		
-		out.write("<br> done : <input type='text' value='" 
-				+ todoDTO.getTodo_done() + "'>");
-		
-		out.write("<br> content : <input type='text' value='" 
+		out.write("<input type='hidden' value='"
+				+ nTodo_id + "' name='id'>");
+
+		out.write("<br> content : <input type='text' name='content' value='" 
 				+ todoDTO.getTodo_content() + "'>");
 		
-		out.write("<br> ctime : <input type='text' value='" 
-				+ todoDTO.getTodo_ctime() + "'> "
-				+ "<br><br> <input type=\"submit\" value=\"post 전송\">"
+		out.write("<br> <input type=\"submit\" value=\"수정완료\">"
 				+ "</form>");
 				
 		out.write("<a href='/proj03_1_todo/todo/detail?todo_id="
 				+ todo_id + "'> 뒤로 </a>"
-				
 				);
 		
 	}

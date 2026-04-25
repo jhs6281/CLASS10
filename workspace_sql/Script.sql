@@ -955,6 +955,7 @@ WHERE deptno = 40;
 UPDATE dept_temp2
 SET dname = 'DATABASE', loc = 'SEOUL'
 WHERE deptno = 40;
+
 SELECT * FROM dept_temp2;
 
 UPDATE dept_temp2
@@ -1185,3 +1186,14 @@ WHERE deptno = 10;
 
 
 SELECT * FROM SALGRADE ;
+SELECT * FROM emp ;
+
+SELECT * FROM (
+	SELECT rownum AS rnum, e.* FROM (
+		SELECT * FROM emp
+		ORDER BY hiredate
+	) e
+)
+WHERE rnum >= 3 AND rnum <= 7;
+
+--WHERE rnum BETWEEN 3 AND 7;

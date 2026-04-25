@@ -113,18 +113,18 @@ function bind() {
             //     }
             // }
             // 문제 3번
-           
+
             // forEach 연습
             q1.forEach((value, idx, all) => {
                 // value(첫번째 인자) = q1[i]
                 // idx(두번째 인자) = q1[i]의 상위 버전(문자열 가능해서)
                 // all(세번째 인자) = 전부
-                
+
                 if (value.category == 'T1H') {
                     console.log(value, idx);
-                     //문제 3
+                    //문제 3
                     document.querySelector('#temp').innerHTML +=
-                ` 
+                        ` 
                     <tr>
                         <td>${value.fcstTime}</td>
                         <td>${value.fcstValue}</td>
@@ -139,7 +139,7 @@ function bind() {
                 if (value.category == 'REH') {
                     console.log(value, idx);
                 }
-                
+
             });
 
 
@@ -210,3 +210,29 @@ function bind() {
 
 
 }
+
+function bind() {
+    selectAll();
+}
+
+function selectAll() {
+
+    const chkbox_selectAll = document.querySelect("#chkbox_selectAll")
+
+    chkbox_selectAll.addEventListener("change", function () {
+
+        const chkbox_selectOne = document.querySelectAll(".chkbox_selectOne")
+        if (chkbox_selectAll.checked) {
+            // chkbox_selectOne.forEach(value => {
+            //     chkbox_selectOne.checked = true
+            //  })
+            chkbox_selectOne.checked=true
+
+        } else {
+            chkbox_selectOne.checked=false
+        }
+
+
+    })
+}
+

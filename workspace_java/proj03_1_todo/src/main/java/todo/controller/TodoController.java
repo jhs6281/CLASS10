@@ -38,6 +38,8 @@ public class TodoController extends HttpServlet {
 		// html로 출력하기
 		PrintWriter out = response.getWriter();
 
+		out.println("<a href='add.html'> 글쓰기 </a>");
+		
 		out.println("<table border=1>");
 		out.println("<tr>");
 		out.println("	<th> todo_id </td>");

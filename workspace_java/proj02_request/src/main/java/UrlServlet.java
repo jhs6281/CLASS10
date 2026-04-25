@@ -40,7 +40,7 @@ public class UrlServlet extends HttpServlet {
 		System.out.println("getContextPath: " + request.getContextPath());
 
 		// ContextPath를 제외한 뒤 주소
-		System.out.println("getContextPath: " + request.getServletPath());
+		System.out.println("getServletPath: " + request.getServletPath());
 		
 		
 	}
